@@ -204,6 +204,8 @@ puts a**b
 ### Comparação
 * `==`
 ```ruby
+# Verifica se o valor da variável a é igual ao valor da variável b, se sim retorna true.
+
 a = 10
 b = 20
 
@@ -212,6 +214,8 @@ puts (a == b)
 
 * `!=`
 ```ruby
+# Verifica se o valor da váriavel a é diferente do valor da variável b, se sim retorna true.
+
 a = 10
 b = 20
 
@@ -220,6 +224,8 @@ puts (a != b)
 
 * ```>```
 ```ruby
+# Verifica se o valor da variável a é maior que o valor da variável b, se sim retorna true.
+
 a = 10
 b = 20
 
@@ -228,6 +234,8 @@ puts (a > b)
 
 * ```<```
 ```ruby
+# Verifica se o valor da variável a é menor que o valor da variável b, se sim retorna true.
+
 a = 10
 b = 20
 
@@ -236,6 +244,8 @@ puts (a < b)
 
 * ```>=```
 ```ruby
+# Verifica se o valor da variável a é maior ou igual ao valor da variável b, se sim retorna true.
+
 a = 10
 b = 20
 
@@ -244,6 +254,8 @@ puts (a >= b)
 
 * ```<=```
 ```ruby
+# Verifica se o valor da variável a é menor ou igual ao valor da variável b, se sim retorna true.
+
 a = 10
 b = 20
 
@@ -252,6 +264,8 @@ puts (a <= b)
 
 * ```<=>```
 ```ruby
+# Verifica se o valor da variável a é igual ao valor da váriavel b, então retorna 0, verifica se o valor da variável a é maior que o valor da váriavel b, então retorna 1, e verifica se o valor da variável a é menor que o valor da variável b, então retorna -1.
+
 a = 10
 b = 20
 
@@ -268,6 +282,8 @@ puts (a === b)
 
 * `.eql?`
 ```ruby
+# Verifica se o valor da variável a é igual ao valor da variável b, e se seus tipos são iguais, se sim retorna true.
+
 a = 10
 b = 20
 
@@ -276,6 +292,8 @@ puts a.eql?(b)
 
 * `.equal?`
 ```ruby
+# Verifica se o object id da variável a é igual à variável b, se sim retorna true.
+
 a = 10
 b = 20
 
@@ -369,7 +387,6 @@ elsif conditional <= 2 && conditional != 0
 else
   puts 'I can`t guess the number'
 end
-
 ```
 
 ### if modifier:
