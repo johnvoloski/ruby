@@ -16,23 +16,22 @@ Ruby Presentation
 # Ruby Syntax
 
 ## Reserved Words:
-----------|---------|---------|---------
-BEGIN     | do      | next    | then
-END       | else    | nil     | true
-alias     | elsif   | not     | undef
-and       | end     | or      | unless
-begin     | ensure  | redo    | until
-break     | false   | rescue  | when
-case      | for     | retry   | while
-class     | if      | return  | __FILE__
-def       | in      | self    | __LINE__
-defined?  | module  | super   |
+| ----------|---------|---------|----------|
+| BEGIN     | do      | next    | then     |
+| END       | else    | nil     | true     |
+| alias     | elsif   | not     | undef    |
+| and       | end     | or      | unless   |
+| begin     | ensure  | redo    | until    |
+| break     | false   | rescue  | when     |
+| case      | for     | retry   | while    |
+| class     | if      | return  | __FILE__ |
+| def       | in      | self    | __LINE__ |
+| defined?  | module  | super   |          |
 
 ## Comments:
 `# I am a comment. Just ignore me.`
 
-```
-#!ruby
+```ruby
 =begin
 I am a first comment.
 I am a second comment.
@@ -40,8 +39,7 @@ I am a second comment.
 ```
 
 ## Classes:
-```
-#!ruby
+```ruby
 class HelloWorld
 end
 ```
@@ -50,8 +48,7 @@ end
 
 ### Global Variables
 `Variáveis globais começam com $. Não inicializadas seu valor padrão é nil.`
-```
-#!ruby
+```ruby
 $global_variable = 0
 
 class HelloWorldOne
