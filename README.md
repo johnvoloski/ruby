@@ -186,8 +186,8 @@ b = 20
 puts b % a
 ```
 
-* * Exponencial
-```> Executa o cálculo exponencial sobre o valor da variável a quando o valor de seu expoente é o valor da variável b e retorna o resultado.```
+* ```* Exponencial```
+> Executa o cálculo exponencial sobre o valor da variável a quando o valor de seu expoente é o valor da variável b e retorna o resultado.
 ```ruby
 a = 10
 b = 20
