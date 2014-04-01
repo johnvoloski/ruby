@@ -16,7 +16,7 @@ Ruby Presentation
 # Ruby Syntax
 
 ## Reserved Words:
-| ----------|---------|---------|----------|
+| --------- | ------- | ------- | -------- |
 | BEGIN     | do      | next    | then     |
 | END       | else    | nil     | true     |
 | alias     | elsif   | not     | undef    |
@@ -76,8 +76,7 @@ classTwo.output
 
 ### Instance Variables
 ` Variáveis de instância começam com @. Não inicializadas seu valor padrão é nil.`
-```
-#!ruby
+```ruby
 
 class HelloWorldOne
   def initialize(value)
@@ -105,8 +104,7 @@ HelloWorldTwo.new("Patrick").output
 
 ### Class Variables:
 `Variáveis de classe começam com @@. Devem ser inicializadas.`
-```
-#!ruby
+```ruby
 class HelloWorldOne
   @@class_variable = ''
 
