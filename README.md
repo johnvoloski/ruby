@@ -141,54 +141,60 @@ HelloWorld.new.output
 ## Operadores:
 
 ### Aritimético
-* `+ Soma`
-> `Soma o valor da variável a com o valor da variável b e returna o resultado.`
+* `+`
 ```ruby
+# Soma o valor da variável a com o valor da variável b e returna o resultado.
+
 a = 10
 b = 20
 
 puts a + b
 ```
 
-* `- Subtração`
-> `Subtrai da variável a o valor da váriavel b e returna o resultado`
+* `-`
 ```ruby
+# Subtrai da variável a o valor da váriavel b e returna o resultado.
+
 a = 10
 b = 20
 
 puts a - b
 ```
 
-* ```* Multiplicação```
-> `Multiplica o valor da variável a com o valor da variável b e retorna o resultado.`
+* ```*```
 ```ruby
+# Multiplica o valor da variável a com o valor da variável b e retorna o resultado.
+
 a = 10
 b = 20
 
 puts a * b
 ```
 
-* `/ Divisão`
-> `Divide o valor da variável b por o valor da variável a e retorna o resultado.`
+* `/`
 ```ruby
+# Divide o valor da variável b por o valor da variável a e retorna o resultado.
+
 a = 10
 b = 20
 
 puts b / a
 ```
 
-* `% Módulo`
-> `Divide o valor da váriavel b por o valor da variável a e retorna o quociente da divisão.`
+* `%`
 ```ruby
+# Divide o valor da váriavel b por o valor da variável a e retorna o quociente da divisão.
+
 a = 10
 b = 20
 
 puts b % a
 ```
 
-* ```* Exponencial```
-> Executa o cálculo exponencial sobre o valor da variável a quando o valor de seu expoente é o valor da variável b e retorna o resultado.
+* ```*```
 ```ruby
+# Executa o cálculo exponencial sobre o valor da variável a quando o valor de seu expoente é o valor da variável b e retorna o resultado.
+
 a = 10
 b = 20
 
