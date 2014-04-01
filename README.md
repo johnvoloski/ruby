@@ -142,32 +142,169 @@ HelloWorld.new.output
 
 ### Aritimético
 * `+ Soma`
+> `Soma o valor da variável a com o valor da variável b e returna o resultado.`
+```ruby
+a = 10
+b = 20
+
+puts a + b
+```
+
 * `- Subtração`
-* `* Multiplicação`
+> `Subtrai da variável a o valor da váriavel b e returna o resultado`
+```ruby
+a = 10
+b = 20
+
+puts a - b
+```
+
+* ```* Multiplicação```
+> `Multiplica o valor da variável a com o valor da variável b e retorna o resultado.`
+```ruby
+a = 10
+b = 20
+
+puts a * b
+```
+
 * `/ Divisão`
+> `Divide o valor da variável b por o valor da variável a e retorna o resultado.`
+```ruby
+a = 10
+b = 20
+
+puts b / a
+```
+
 * `% Módulo`
-* `** Exponencial`
+> `Divide o valor da váriavel b por o valor da variável a e retorna o quociente da divisão.`
+```ruby
+a = 10
+b = 20
+
+puts b % a
+```
+
+* ```** Exponencial```
+> `Executa o cálculo exponencial sobre o valor da variável a quando o valor de seu expoente é o valor da variável b e retorna o resultado.`
+```ruby
+a = 10
+b = 20
+
+puts a**b
+```
 
 ### Comparação
 * `==`
+```ruby
+a = 10
+b = 20
+
+puts (a == b)
+```
+
 * `!=`
-* `>`
-* `<`
-* `>=`
-* `<=`
-* `<=>`
+```ruby
+a = 10
+b = 20
+
+puts (a != b)
+```
+
+* ```>```
+```ruby
+a = 10
+b = 20
+
+puts (a > b)
+```
+
+* ```<```
+```ruby
+a = 10
+b = 20
+
+puts (a < b)
+```
+
+* ```>=```
+```ruby
+a = 10
+b = 20
+
+puts (a >= b)
+```
+
+* ```<=```
+```ruby
+a = 10
+b = 20
+
+puts (a <= b)
+```
+
+* ```<=>```
+```ruby
+a = 10
+b = 20
+
+puts (a <=> b)
+```
+
 * `===`
+```ruby
+a = 10
+b = 20
+
+puts (a === b)
+```
+
 * `.eql?`
+```ruby
+a = 10
+b = 20
+
+puts a.eql?(b)
+```
+
 * `.equal?`
+```ruby
+a = 10
+b = 20
+
+puts a.equal?(b)
+```
 
 ### Atribuição
 * `=`
+```ruby
+```
+
 * `+=`
+```ruby
+```
+
 * `-=`
+```ruby
+```
+
 * `*=`
+```ruby
+```
+
 * `/=`
+```ruby
+```
+
 * `%=`
+```ruby
+```
+
 * `**=`
+```ruby
+```
+
 
 ### Atribuição Múltipla
 ```ruby
@@ -176,18 +313,42 @@ a, b, c = 10, 20 , 30
 
 ### Lógico
 * `and`
+```ruby
+```
+
 * `or`
+```ruby
+```
+
 * `&&`
+```ruby
+```
+
 * `||`
+```ruby
+```
+
 * `!`
+```ruby
+```
+
 * `not`
+```ruby
+```
 
 ### Ternário
 * `?:`
+```ruby
+```
 
 ### Intervalo
 * `..`
+```ruby
+```
+
 * `...`
+```ruby
+```
 
 ## if, else, case, unless
 
@@ -227,7 +388,7 @@ end
 ```ruby
 conditional = false
 
-puts 'Is false.' if conditional
+puts 'Is false.' unless conditional
 ```
 
 ### case statement:
