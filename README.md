@@ -189,3 +189,61 @@ a, b, c = 10, 20 , 30
 * `..`
 * `...`
 
+## if, else, case, unless
+
+### if, else statement:
+```ruby
+conditional = 1
+
+if conditional > 2
+  puts 'conditional is greater than 2'
+elsif conditional <= 2 && conditional != 0
+  puts 'conditional  is 1'
+else
+  puts 'I can`t guess the number'
+end
+
+```
+
+### if modifier:
+```ruby
+conditional = true
+
+puts 'Is true.' if conditional
+```
+
+### unless statement:
+```ruby
+conditional = 1
+
+unless conditional > 2
+  puts 'conditional is less than 2'
+else
+  puts 'conditional is greater than 2'
+end
+```
+
+### unless modifier:
+```ruby
+conditional = false
+
+puts 'Is false.' if conditional
+```
+
+### case statement:
+```ruby
+conditional = 10
+
+case conditional
+when 1
+  puts 'Is 1.'
+when 2 .. 5
+  puts 'Is between 2 and 5'
+when 6 .. 9
+  puts 'Is between 6 and 9'
+when 10
+  puts 'is 10'
+else
+  puts 'I can`t guess the number'
+end
+```
