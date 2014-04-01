@@ -16,6 +16,7 @@ Ruby Presentation
 # Ruby Syntax
 
 ## Reserved Words:
+```
 | --------- | ------- | ------- | -------- |
 | BEGIN     | do      | next    | then     |
 | END       | else    | nil     | true     |
@@ -27,6 +28,7 @@ Ruby Presentation
 | class     | if      | return  | __FILE__ |
 | def       | in      | self    | __LINE__ |
 | defined?  | module  | super   |          |
+```
 
 ## Comments:
 `# I am a comment. Just ignore me.`
