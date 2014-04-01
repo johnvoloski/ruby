@@ -122,3 +122,27 @@ end
 HelloWorldOne.new.assign_variable("Bob Esponja").output
 HelloWorldTwo.new.output
 ```
+
+### Local Variables:
+`Variáveis locais começam com uma letra minúscula ou _ . O escopo de uma variável local varia de classe, módulo, método ou a abertura e fechamento de um bloco, que corresponde ao final de seu ciclo.`
+```ruby
+class HelloWorld
+  def initialize(value)
+    puts value
+  end
+end
+```
+
+### Constants
+`Constantes começam com uma letra maiúscula. Quando definidas dentro de uma classe ou módulo podem ser acessadas somente dentro dos mesmos, e as definidas fora de uma classe ou módulo podem ser acessadas globalmente. Costantes também não podem ser definidas dentro de métodos.`
+```ruby
+class HelloWorld
+  HELLO_WORLD = 'Hello Bob Esponja'
+
+  def output
+    puts HELLO_WORLD
+  end
+end
+
+HelloWorld.new.output
+```
