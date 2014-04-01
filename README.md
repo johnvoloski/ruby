@@ -26,12 +26,6 @@ I am a second comment.
 =end
 ```
 
-## Classes:
-```ruby
-class HelloWorld
-end
-```
-
 ## Variables:
 
 ### Global Variables
@@ -143,3 +137,55 @@ HelloWorld.new.output
 * `Ranges`
 * `Regular Expressions`
 * `Procs`
+
+## Operadores:
+
+### Aritimético
+* `+ Soma`
+* `- Subtração`
+* `* Multiplicação`
+* `/ Divisão`
+* `% Módulo`
+* `** Exponencial`
+
+### Comparação
+* `==`
+* `!=`
+* `>`
+* `<`
+* `>=`
+* `<=`
+* `<=>`
+* `===`
+* `.eql?`
+* `.equal?`
+
+### Atribuição
+* `=`
+* `+=`
+* `-=`
+* `*=`
+* `/=`
+* `%=`
+* `**=`
+
+### Atribuição Múltipla
+```ruby
+a, b, c = 10, 20 , 30
+```
+
+### Lógico
+* `and`
+* `or`
+* `&&`
+* `||`
+* `!`
+* `not`
+
+### Ternário
+* `?:`
+
+### Intervalo
+* `..`
+* `...`
+
