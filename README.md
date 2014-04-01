@@ -1,19 +1,5 @@
-Ruby Presentation
-=================
-
-* O que é Ruby?
-* Como usar Ruby? ( Windows, Linux, OSX )
-* Links Úteis
-* Quem usar Ruby?
-* Linguagem
-* Gems
-* Rails
-* Introdução Rails
-* Banco de Dados e Rails
-* Projeto de Exemplo
-* RSpec e Cucumber
-
-# Ruby Syntax
+# Ruby
+==================
 
 ## Reserved Words:
 ```
@@ -146,3 +132,14 @@ end
 
 HelloWorld.new.output
 ```
+
+## Literals:
+* `Boolean and nil`
+* `Numbers`
+* `Strings`
+* `Symbols`
+* `Arrays`
+* `Hashes`
+* `Ranges`
+* `Regular Expressions`
+* `Procs`
