@@ -80,7 +80,7 @@ class HelloWorldTwo
   end
 end
 
-HelloWorldOne.new("Bob Esponja").output
+HelloWorldOne.new("SpongeBob SquarePants").output
 HelloWorldTwo.new("Patrick").output
 ```
 
@@ -99,7 +99,7 @@ class HelloWorldOne
   end
 end
 
-HelloWorldOne.new.assign_variable("Bob Esponja").output
+HelloWorldOne.new.assign_variable("SpongeBob SquarePants").output
 HelloWorldTwo.new.output
 ```
 
@@ -117,7 +117,7 @@ end
 `Constantes começam com uma letra maiúscula. Quando definidas dentro de uma classe ou módulo podem ser acessadas somente dentro dos mesmos, e as definidas fora de uma classe ou módulo podem ser acessadas globalmente. Costantes também não podem ser definidas dentro de métodos.`
 ```ruby
 class HelloWorld
-  HELLO_WORLD = 'Hello Bob Esponja'
+  HELLO_WORLD = 'Hello SpongeBob SquarePants'
 
   def output
     puts HELLO_WORLD
