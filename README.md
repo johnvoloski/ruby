@@ -1,21 +1,6 @@
 RUBY
 ============================================
 
-## Reserved Words:
-```
-| --------- | ------- | ------- | -------- |
-| BEGIN     | do      | next    | then     |
-| END       | else    | nil     | true     |
-| alias     | elsif   | not     | undef    |
-| and       | end     | or      | unless   |
-| begin     | ensure  | redo    | until    |
-| break     | false   | rescue  | when     |
-| case      | for     | retry   | while    |
-| class     | if      | return  | __FILE__ |
-| def       | in      | self    | __LINE__ |
-| defined?  | module  | super   |          |
-```
-
 ## Comments:
 `# I am a comment. Just ignore me.`
 
@@ -303,36 +288,86 @@ puts a.equal?(b)
 ### Atribuição
 * `=`
 ```ruby
+# Atruibui o valor da variável a para a váriavel b.
+
+a = 10
+b = a
+
+puts b
 ```
 
 * `+=`
 ```ruby
+# Atribui somando o valor da variável a por o valor da váriavel b.
+
+a = 10
+b = 10
+b += a
+
+puts b
 ```
 
 * `-=`
 ```ruby
+# Atribui subtraindo o valor da variável a por o valor da váriavel b.
+
+a = 10
+b = 10
+b -= a
+
+puts b
 ```
 
-* `*=`
+* ```*=```
 ```ruby
+# Atribui multiplicando o valor da variável a por o valor da váriavel b.
+
+a = 10
+b = 10
+b *= a
+
+puts b
 ```
 
 * `/=`
 ```ruby
+# Atribui dividindo o valor da variável a por o valor da váriavel b.
+
+a = 10
+b = 10
+b /= a
+
+puts b
 ```
 
 * `%=`
 ```ruby
+# Atribui o quociente da divisão do valor da variável a por o valor da váriavel b.
+
+a = 10
+b = 10
+b %= a
+
+puts b
 ```
 
-* `**=`
+* ```**=```
 ```ruby
+# Atribui calculando o valor exponencial do valor da variável a por o valor da váriavel b.
+
+a = 10
+b = 10
+b **= a
+
+puts b
 ```
 
 
 ### Atribuição Múltipla
 ```ruby
-a, b, c = 10, 20 , 30
+# Atribui paralelizadamente valores à variáveis seguindo sua ordem de definição.
+
+a, b, c = 10, 20, 30
 ```
 
 ### Lógico
@@ -363,15 +398,26 @@ a, b, c = 10, 20 , 30
 ### Ternário
 * `?:`
 ```ruby
+# Cria uma expressão condicional.
+
+condition = false
+
+puts conditidion ? true : false
 ```
 
 ### Intervalo
 * `..`
 ```ruby
+# Cria um intervalo entre o ponto de partida e o ponto de chegada incluido ele.
+
+puts (1..10).to_a
 ```
 
 * `...`
 ```ruby
+# Cria um intervalo entre o ponto de partida e o ponto de chegada excluíndo ele.
+
+puts (1...10).to_a
 ```
 
 ## if, else, case, unless
