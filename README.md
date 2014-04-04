@@ -362,7 +362,6 @@ b **= a
 puts b
 ```
 
-
 ### Atribuição Múltipla
 ```ruby
 # Atribui paralelizadamente valores à variáveis seguindo sua ordem de definição.
@@ -371,28 +370,36 @@ a, b, c = 10, 20, 30
 ```
 
 ### Lógico
-* `and`
+* `and` ou `&&`
 ```ruby
+# Se o valor da variável a e o valor da variável b forem verdadeiros, a condição é verdadeira.
+
+a = true
+b = true
+
+puts 'True' if a and b
+puts 'True' if a && b
 ```
 
-* `or`
+* `or` ou `||`
 ```ruby
+# Se o valor da variável a ou o valor da variável b forem verdadeiros, a condição é verdadeira.
+
+a = true
+b = false
+
+puts 'True' if a or b
+puts 'True' if a || b
 ```
 
-* `&&`
+* `!` ou `not`
 ```ruby
-```
 
-* `||`
-```ruby
-```
+a = false
+b = false
 
-* `!`
-```ruby
-```
-
-* `not`
-```ruby
+puts 'True' if !(a && b)
+puts 'True' if not(a && b)
 ```
 
 ### Ternário
@@ -477,3 +484,4 @@ else
   puts 'I can`t guess the number'
 end
 ```
+
