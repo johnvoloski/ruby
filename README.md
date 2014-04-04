@@ -394,6 +394,7 @@ puts 'True' if a || b
 
 * `!` ou `not`
 ```ruby
+# Se o valor da variável a e o valor da variável b forem falsos, a condição é verdadeira.
 
 a = false
 b = false
