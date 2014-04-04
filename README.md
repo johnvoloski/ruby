@@ -1,7 +1,48 @@
 RUBY
 ============================================
 
-## Comments:
+## Introduction:
+
+### John Voloski:
+  * johnvoloski
+    * github
+    * bitbucket
+    * gmail.com
+    * cwi.com.br
+  * Projeto Atual ( Fábrica RoR )
+
+### História do Ruby:
+  * Yukihiro "Matz" Matsumoto
+  * Se tornou pública em 1995
+  * Ganhou muita popularidade com o Rails
+
+### Pontos Positivos:
+  * Opensource
+  * Orientada a Objetos
+  * Blocos de Código
+  * Mixins
+  * RubyGems
+  * Bundle
+  * Rake
+
+### Gems "Famosas":
+  * [Rails](https://github.com/rails/rails)
+  * [Sinatra](https://github.com/sinatra/sinatra)
+  * [SimpleForm](https://github.com/plataformatec/simple_form)
+  * [Devise](https://github.com/plataformatec/devise)
+  * [RSpec](https://github.com/rspec/rspec/)
+  * [Cucumber](https://github.com/cucumber/cucumber)
+
+### Quem usa:
+  * [Basecamp](http://basecamp.com/)
+  * [Github](http://github.com/)
+  * [Groupon](http://www.groupon.com/)
+  * [SlideShare](http://www.slideshare.com/)
+  * [Iba](http://iba.com.br/)
+
+## The Structure and Execution of Ruby Programs
+
+### Comments:
 `# I am a comment. Just ignore me.`
 
 ```ruby
@@ -11,7 +52,19 @@ I am a second comment.
 =end
 ```
 
-## Variables:
+## Datatype and Objects:
+
+### Booleans and nil
+### Numbers
+### Strings
+### Symbols
+### Arrays
+### Hashes
+### Ranges
+### Regular Expressions
+### Objects
+
+## Expressions and Operators:
 
 ### Global Variables
 `Variáveis globais começam com $. Não inicializadas seu valor padrão é nil.`
@@ -112,20 +165,9 @@ end
 HelloWorld.new.output
 ```
 
-## Datatype and Objects:
-* `Boolean and nil`
-* `Numbers`
-* `Strings`
-* `Symbols`
-* `Arrays`
-* `Hashes`
-* `Ranges`
-* `Regular Expressions`
-* `Objects`
+### Operators:
 
-## Operadores:
-
-### Aritimético
+#### Aritimético
 * `+`
 ```ruby
 # Soma o valor da variável a com o valor da variável b e returna o resultado.
@@ -186,7 +228,7 @@ b = 20
 puts a**b
 ```
 
-### Comparação
+#### Comparação
 * `==`
 ```ruby
 # Verifica se o valor da variável a é igual ao valor da variável b, se sim retorna true.
@@ -285,7 +327,7 @@ b = 20
 puts a.equal?(b)
 ```
 
-### Atribuição
+#### Atribuição
 * `=`
 ```ruby
 # Atruibui o valor da variável a para a váriavel b.
@@ -362,14 +404,14 @@ b **= a
 puts b
 ```
 
-### Atribuição Múltipla
+#### Atribuição Múltipla
 ```ruby
 # Atribui paralelizadamente valores à variáveis seguindo sua ordem de definição.
 
 a, b, c = 10, 20, 30
 ```
 
-### Lógico
+#### Lógico
 * `and` ou `&&`
 ```ruby
 # Se o valor da variável a e o valor da variável b forem verdadeiros, a condição é verdadeira.
@@ -403,7 +445,7 @@ puts 'True' if !(a && b)
 puts 'True' if not(a && b)
 ```
 
-### Ternário
+#### Ternário
 * `?:`
 ```ruby
 # Cria uma expressão condicional.
@@ -413,7 +455,7 @@ condition = false
 puts conditidion ? true : false
 ```
 
-### Intervalo
+#### Intervalo
 * `..`
 ```ruby
 # Cria um intervalo entre o ponto de partida e o ponto de chegada incluido ele.
