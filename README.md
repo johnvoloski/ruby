@@ -112,7 +112,7 @@ end
 HelloWorld.new.output
 ```
 
-## Literals:
+## Datatype and Objects:
 * `Boolean and nil`
 * `Numbers`
 * `Strings`
@@ -121,7 +121,7 @@ HelloWorld.new.output
 * `Hashes`
 * `Ranges`
 * `Regular Expressions`
-* `Procs`
+* `Objects`
 
 ## Operadores:
 
@@ -428,9 +428,11 @@ puts (1..10).to_a
 puts (1...10).to_a
 ```
 
-## if, else, case, unless
+## Statements and Control Structures
 
-### if, else statement:
+### Conditionals
+
+#### if, else statement:
 ```ruby
 conditional = 1
 
@@ -443,14 +445,14 @@ else
 end
 ```
 
-### if modifier:
+#### if modifier:
 ```ruby
 conditional = true
 
 puts 'Is true.' if conditional
 ```
 
-### unless statement:
+#### unless statement:
 ```ruby
 conditional = 1
 
@@ -461,14 +463,14 @@ else
 end
 ```
 
-### unless modifier:
+#### unless modifier:
 ```ruby
 conditional = false
 
 puts 'Is false.' unless conditional
 ```
 
-### case statement:
+#### case statement:
 ```ruby
 conditional = 10
 
@@ -486,3 +488,152 @@ else
 end
 ```
 
+### Loops
+
+#### While statement:
+```ruby
+a = 0
+b = 5
+
+while a < b do
+  puts a
+  a += 1
+end
+```
+
+#### While modifier:
+```ruby
+a = 0
+b = 5
+
+begin
+  puts a
+  a += 1
+end while a < b
+```
+
+#### Until Statement
+```ruby
+a = 0
+b = 5
+
+until a > b do
+  puts a
+  a += 1
+end
+```
+
+#### Until modifier:
+```ruby
+a = 0
+b = 5
+
+begin
+  puts a
+  a += 1
+end until a > b
+```
+
+#### For:
+```ruby
+for a in 0..5
+  puts a
+end
+```
+
+### Iterators and Enumerable Objects
+
+### Blocks
+
+### Altering Control Flow
+
+#### Return
+```ruby
+for a in 0..5
+  return a if a > 2
+  puts a
+end
+```
+
+#### Break:
+```ruby
+for a in 0..5
+  break if a > 2
+  puts a
+end
+```
+
+#### Next:
+```ruby
+for a in 0..5
+  next if a < 2
+  puts a
+end
+```
+
+#### Redo:
+```ruby
+for a in 0..5
+  puts a
+  redo if a < 2
+end
+```
+
+#### Retry:
+```ruby
+# Ruby 1.8 funcionava também como o redo
+
+a = 0
+
+begin
+  a += 1
+  raise NoMethodError
+rescue
+  puts a
+  retry
+end
+```
+
+### Exception and Exception Handling
+
+### begin and end
+
+### Threads, Fibers and Continuations
+
+## Methods, Procs, Lambdas and Closures
+
+### Defining Simple Methods
+
+### Method Names
+
+### Methods and Parentheses
+
+### Method Arguments
+
+### Procs and Lambdas
+
+### Closures
+
+### Method Objects
+
+### Funcional Programming
+
+## Classes and Modules
+
+### Defining a Simples Class
+
+### Method Visibility: Public, Protected, Private
+
+### Subclassing and Inheritance
+
+### Object Creation and Initialization
+
+### Modules
+
+### Loading and Requiring Modules
+
+### Singleton Methods and the Eigenclass
+
+### Method Lookup
+
+### Constant Lookup
