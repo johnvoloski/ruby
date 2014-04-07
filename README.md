@@ -16,16 +16,16 @@ RUBY
   * Se tornou pública em 1995
   * Ganhou muita popularidade com o Rails
 
-### Pontos Positivos:
-  * Opensource
+### Características:
+  * Open Source
   * Orientada a Objetos
   * Blocos de Código
   * Mixins
   * RubyGems
-  * Bundle
-  * Rake
 
 ### Gems "Famosas":
+  * [Bundler](https://github.com/bundler/bundler/)
+  * [Rake](https://github.com/jimweirich/rake)
   * [Rails](https://github.com/rails/rails)
   * [Sinatra](https://github.com/sinatra/sinatra)
   * [SimpleForm](https://github.com/plataformatec/simple_form)
@@ -38,7 +38,37 @@ RUBY
   * [Github](http://github.com/)
   * [Groupon](http://www.groupon.com/)
   * [SlideShare](http://www.slideshare.com/)
-  * [Iba](http://iba.com.br/)
+  * [iba](http://iba.com.br/)
+
+## RubyGems:
+  * [RubyGems Commands](http://guides.rubygems.org/command-reference/)
+  * `gem dependency GEMNAME` - Mostra as dependências da gem instalada.
+  * `gem fetch GEMNAME` - Baixa a gem e coloca no diretório atual.
+  * `gem help` - Ajuda
+  * `gem install GEMNAME` - Instala uma gem.
+  * `gem list GEMNAME` - Lista as gems que começam com a GEMNAME
+  * `gem outdated` - Exibe todas as gems que necessitam de update.
+  * `gem push` - Sobe uma gem para o `rubygems`
+  * `gem search GEMNAME` - Pesquisa uma gem no `rubygems` com a GEMNAME.
+  * `gem uninstall GEMNAME` - Desinstala uma gem.
+  * `gem update GEMNAME` - Atualiza a gem para a última versão.
+  * `gem yank GEMNAME -v VERSION` - Remove uma versão da gem no `rubygems`.
+
+## Bundler:
+  É um gerenciador de `gems` da aplicação. Gerando uma lista de `gems` ele se encarrega de instalar, verificar versões e compatibilidades, após instaladas
+  o `bundler` ajuda a atualizar quando tiver versões novas disponíveis, e registra as versões instaladas pra que se possa replicar exatamente as mesmas versões em diversas máquinas.
+
+  ![Gemfile](https://github.com/johnvoloski/ruby/raw/master/src/images/gemfile.png "Gemfile")
+  ![Gemfile.lock](https://github.com/johnvoloski/ruby/raw/master/src/images/gemfile_lock.png "Gemfile.lock")
+
+## Rake:
+É um automatizador de tarefas, você consegue criar tarefas utilizando a sintaxe do `ruby` como por exemplo publicar algo em um ssh ou ftp automaticamente.
+```ruby
+# Rakefile
+task :ftp do
+  ...
+end
+```
 
 ## The Structure and Execution of Ruby Programs
 
@@ -685,18 +715,20 @@ PERGUNTAS?
 
 PROBLEMA!
 ============================================
+```
 Um dos serviços mais utilizados pelos usuários de aparelhos celulares são os SMS (Short Message Service), que permite o envio de mensagens curtas (até 255 caracteres em redes GSM e 160 caracteres em redes CDMA).
 Para digitar uma mensagem em um aparelho que não possui um teclado QWERTY embutido é necessário fazer algumas combinações das 10 teclas numéricas do aparelho para conseguir digitar. Cada número é associado a um conjunto de letras como a seguir:
-Letras  ->  Número 
-ABC     ->  2 
-DEF     ->  3 
-GHI     ->  4 
-JKL     ->  5 
-MNO     ->  6 
-PQRS    ->  7 
-TUV     ->  8 
-WXYZ    ->  9 
-Espaço  -> 0 
+Letras -> Número
+ABC    -> 2
+DEF    -> 3
+GHI    -> 4
+JKL    -> 5
+MNO    -> 6
+PQRS   -> 7
+TUV    -> 8
+WXYZ   -> 9
+Espaço -> 0
 Desenvolva um programa que, dada uma mensagem de texto limitada a 255 caracteres, retorne a seqüência de números que precisa ser digitada. Uma pausa, para ser possível obter duas letras referenciadas pelo mesmo número, deve ser indicada como _.
 Por exemplo, para digitar "RUBY E LEGAL", você precisa digitar:
 777882299903305553342555
+```
