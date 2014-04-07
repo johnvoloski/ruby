@@ -22,6 +22,28 @@ RUBY
   * Blocos de Código
   * Mixins
   * RubyGems
+  * Linguagem Interpretada
+
+### Interpretadores:
+  * MRI
+  * YARV
+  * JRuby
+  * Rubinius
+  * MagLev
+  * MacRuby
+
+### Console:
+  * irb
+
+### Links:
+  * [Ruby Lang](https://www.ruby-lang.org) - Site Oficial do Ruby
+  * [TryRuby](http://tryruby.org) - Console Online de Ruby
+  * [Ruby ToolBox](https://www.ruby-toolbox.com/) - Pesquisa da gem melhor conceituada para algum propósito
+  * [RoR Brasil](http://www.rubyonrails.com.br/) - Ruby on Rails Brasil
+  * [RoR](http://rubyonrails.org/) - Ruby on Rails
+  * [RubyGems](http://rubygems.org/) - Gems disponíveis para o Ruby
+  * [Rails for Zombies](http://railsforzombies.org/) - Site para aprendizado de Rails
+  * [Rails Casts](http://www.railscasts.com/) - Vídeo aula de Rails
 
 ### O que é uma Gem?
   Uma "RubyGem" ou simplesmente "Gem" é uma biblioteca, um conjunto de arquivos Ruby reusáveis, etiquetada com um nome e uma versão (via um arquivo chamado de "gemspec").
@@ -66,7 +88,6 @@ RUBY
 
 ## Rake:
 É um automatizador de tarefas, você consegue criar tarefas utilizando a sintaxe do `ruby` como por exemplo publicar algo em um ssh ou ftp automaticamente.
-
 ```ruby
 # Rakefile
 task :ftp do
