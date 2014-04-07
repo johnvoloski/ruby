@@ -58,8 +58,8 @@ RUBY
   É um gerenciador de `gems` da aplicação. Gerando uma lista de `gems` ele se encarrega de instalar, verificar versões e compatibilidades, após instaladas
   o `bundler` ajuda a atualizar quando tiver versões novas disponíveis, e registra as versões instaladas pra que se possa replicar exatamente as mesmas versões em diversas máquinas.
 
-  ![Gemfile](https://github.com/johnvoloski/ruby/raw/master/src/images/gemfile.png "Gemfile")
-  ![Gemfile.lock](https://github.com/johnvoloski/ruby/raw/master/src/images/gemfile_lock.png "Gemfile.lock")
+  ![Gemfile](https://github.com/johnvoloski/ruby/raw/master/images/gemfile.png "Gemfile")
+  ![Gemfile.lock](https://github.com/johnvoloski/ruby/raw/master/images/gemfile_lock.png "Gemfile.lock")
 
 ## Rake:
 É um automatizador de tarefas, você consegue criar tarefas utilizando a sintaxe do `ruby` como por exemplo publicar algo em um ssh ou ftp automaticamente.
