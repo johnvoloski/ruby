@@ -23,6 +23,9 @@ RUBY
   * Mixins
   * RubyGems
 
+### O que é uma Gem?
+  Uma "RubyGem" ou simplesmente "Gem" é uma biblioteca, um conjunto de arquivos Ruby reusáveis, etiquetada com um nome e uma versão (via um arquivo chamado de "gemspec").
+
 ### Gems "Famosas":
   * [Bundler](https://github.com/bundler/bundler/)
   * [Rake](https://github.com/jimweirich/rake)
@@ -63,12 +66,21 @@ RUBY
 
 ## Rake:
 É um automatizador de tarefas, você consegue criar tarefas utilizando a sintaxe do `ruby` como por exemplo publicar algo em um ssh ou ftp automaticamente.
+
 ```ruby
 # Rakefile
 task :ftp do
   ...
 end
 ```
+
+## Instalação: (Pra quem quer começar)
+  * [Vagrant](https://github.com/johnvoloski/ruby-vagrant)
+
+## Gerênciadores de Versões Ruby:
+  * [pik](https://github.com/vertiginous/pik) - Windows
+  * [rmv](http://rvm.io/) - Unix
+  * [rbenv](http://rbenv.org/) - Unix
 
 ## The Structure and Execution of Ruby Programs
 
@@ -710,10 +722,10 @@ end
 
 ### Constant Lookup
 
-PERGUNTAS?
+Perguntas?
 ============================================
 
-PROBLEMA!
+Problema!
 ============================================
 ```
 Um dos serviços mais utilizados pelos usuários de aparelhos celulares são os SMS (Short Message Service), que permite o envio de mensagens curtas (até 255 caracteres em redes GSM e 160 caracteres em redes CDMA).
