@@ -95,7 +95,7 @@ task :ftp do
 end
 ```
 
-## Instalação: (Pra quem quer começar)
+## Instalação:
   * [Vagrant](https://github.com/johnvoloski/ruby-vagrant)
 
 ## Gerênciadores de Versões Ruby:
