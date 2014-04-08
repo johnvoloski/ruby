@@ -115,14 +115,7 @@ end
 ## The Structure and Execution of Ruby Programs
 
 ### Comments:
-`# I am a comment. Just ignore me.`
-
-```ruby
-=begin
-I am a first comment.
-I am a second comment.
-=end
-```
+  ![Comments](https://github.com/johnvoloski/ruby/raw/master/images/source/comments.png "Comments")
 
 ## Datatype and Objects:
 
