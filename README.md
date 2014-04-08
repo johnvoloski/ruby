@@ -132,103 +132,24 @@ end
 ## Expressions and Operators:
 
 ### Global Variables
-`Variáveis globais começam com $. Não inicializadas seu valor padrão é nil.`
-```ruby
-$global_variable = 0
-
-class HelloWorldOne
-  def increment
-    $global_variable += 1
-  end
-
-  def output
-    puts $global_variable
-  end
-end
-
-class HelloWorldTwo
-  def output
-    puts $global_variable
-  end
-end
-
-classOne = HelloWorldOne.new
-classOne.increment
-classOne.output
-classTwo = HelloWorldTwo.new
-classTwo.output
-```
+  `Variáveis globais começam com $. Não inicializadas seu valor padrão é nil.`
+  ![Global Variables](https://github.com/johnvoloski/ruby/raw/master/images/source/global_variables.png "Global Variables")
 
 ### Instance Variables
-` Variáveis de instância começam com @. Não inicializadas seu valor padrão é nil.`
-```ruby
-
-class HelloWorldOne
-  def initialize(value)
-    @instance_variable = value
-  end
-
-  def output
-    puts @instance_variable
-  end
-end
-
-class HelloWorldTwo
-  def initialize(value)
-    @instance_variable = value
-  end
-
-  def output
-    puts @instance_variable
-  end
-end
-
-HelloWorldOne.new("SpongeBob SquarePants").output
-HelloWorldTwo.new("Patrick").output
-```
+  `Variáveis de instância começam com @. Não inicializadas seu valor padrão é nil.`
+  ![Instance Variables](https://github.com/johnvoloski/ruby/raw/master/images/source/instance_variables.png "Instance Variables")
 
 ### Class Variables:
-`Variáveis de classe começam com @@. Devem ser inicializadas.`
-```ruby
-class HelloWorldOne
-  @@class_variable = ''
-
-  def assign_variable(value)
-    @@class_variable = value
-  end
-
-  def output
-    puts @@class_variable
-  end
-end
-
-HelloWorldOne.new.assign_variable("SpongeBob SquarePants").output
-HelloWorldTwo.new.output
-```
+  `Variáveis de classe começam com @@. Devem ser inicializadas.`
+  ![Class Variables](https://github.com/johnvoloski/ruby/raw/master/images/source/class_variables.png "Class Variables")
 
 ### Local Variables:
-`Variáveis locais começam com uma letra minúscula ou _ . O escopo de uma variável local varia de classe, módulo, método ou a abertura e fechamento de um bloco, que corresponde ao final de seu ciclo.`
-```ruby
-class HelloWorld
-  def initialize(value)
-    puts value
-  end
-end
-```
+  `Variáveis locais começam com uma letra minúscula ou _ . O escopo de uma variável local varia de classe, módulo, método ou a abertura e fechamento de um bloco, que corresponde ao final de seu ciclo.`
+  ![Local Variables](https://github.com/johnvoloski/ruby/raw/master/images/source/local_variables.png "Local Variables")
 
 ### Constants
-`Constantes começam com uma letra maiúscula. Quando definidas dentro de uma classe ou módulo podem ser acessadas somente dentro dos mesmos, e as definidas fora de uma classe ou módulo podem ser acessadas globalmente. Costantes também não podem ser definidas dentro de métodos.`
-```ruby
-class HelloWorld
-  HELLO_WORLD = 'Hello SpongeBob SquarePants'
-
-  def output
-    puts HELLO_WORLD
-  end
-end
-
-HelloWorld.new.output
-```
+  `Constantes começam com uma letra maiúscula. Quando definidas dentro de uma classe ou módulo podem ser acessadas somente dentro dos mesmos, e as definidas fora de uma classe ou módulo podem ser acessadas globalmente. Costantes também não podem ser definidas dentro de métodos.`
+  ![Constants](https://github.com/johnvoloski/ruby/raw/master/images/source/constants.png "Constants")
 
 ### Operators:
 
