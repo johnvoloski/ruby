@@ -1,10 +1,10 @@
 RUBY
 ============================================
 
-## Introduction:
+## Introdução:
 
 ### John Voloski:
-  * johnvoloski
+  * @johnvoloski
     * github
     * bitbucket
     * gmail.com
@@ -44,6 +44,7 @@ RUBY
   * [RubyGems](http://rubygems.org/) - Gems disponíveis para o Ruby
   * [Rails for Zombies](http://railsforzombies.org/) - Site para aprendizado de Rails
   * [Rails Casts](http://www.railscasts.com/) - Vídeo aula de Rails
+  * [Akita on Rails](http://www.akitaonrails.com/) - Blog de Ruby
 
 ### O que é uma Gem?
   Uma "RubyGem" ou simplesmente "Gem" é uma biblioteca, um conjunto de arquivos Ruby reusáveis, etiquetada com um nome e uma versão (via um arquivo chamado de "gemspec").
@@ -87,16 +88,24 @@ RUBY
   ![Gemfile.lock](https://github.com/johnvoloski/ruby/raw/master/images/gemfile_lock.png "Gemfile.lock")
 
 ## Rake:
-É um automatizador de tarefas, você consegue criar tarefas utilizando a sintaxe do `ruby` como por exemplo publicar algo em um ssh ou ftp automaticamente.
+  É um automatizador de tarefas, você consegue criar tarefas utilizando a sintaxe do `ruby` como por exemplo publicar algo em um ssh ou ftp automaticamente.
+
 ```ruby
 # Rakefile
 task :ftp do
   ...
 end
 ```
+  
+  ![Rakefile](https://github.com/johnvoloski/ruby/raw/master/images/rakefile.png "Rakefile")
 
 ## Instalação:
   * [Vagrant](https://github.com/johnvoloski/ruby-vagrant)
+
+## Hospedagem:
+  * [Heroku](https://www.heroku.com/)
+  * [AppFog](https://www.appfog.com/)
+  * [Amazon](https://aws.amazon.com/pt/ec2/?nc1=h_ls)
 
 ## Gerênciadores de Versões Ruby:
   * [pik](https://github.com/vertiginous/pik) - Windows
