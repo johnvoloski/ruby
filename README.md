@@ -1396,9 +1396,12 @@ puts SpongeBob.is_squarepants?(SpongeBob.new)
   puts Ocean::Patrick.new.whoiam?
   puts Ocean.patrick_live_here?
   ```
+
   A diferença de mixins e herança é apenas que quando uma classe inclui um módulo ela não se torna filha deste módulo, 
   apenas implementa os seus métodos.
   Os módulos e os mixins:
+  
+  O `include` implementa os métodos do módulo como um método de instância na classe.
   ```ruby
   module Ocean
     def self.whoiam?
@@ -1421,6 +1424,33 @@ puts SpongeBob.is_squarepants?(SpongeBob.new)
   sb = SpongeBob.new
   puts sb.whoiam?
   puts sb.i_live_in_ocean?
+
+  puts Ocean.whoiam?
+  ```
+
+  O `extend` implementa os métodos do módulo como um método de classe na classe.
+  ```ruby
+  module Ocean
+    def self.whoiam?
+      'Ocean'
+    end
+
+    def i_live_in_ocean?
+      true
+    end
+  end
+
+  class SpongeBob
+    extend Ocean
+
+    def whoiam?
+      'SpongeBob'
+    end
+  end
+
+  sb = SpongeBob.new
+  puts sb.whoiam?
+  puts SpongeBob.i_live_in_ocean?
 
   puts Ocean.whoiam?
   ```
