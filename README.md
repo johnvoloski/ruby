@@ -637,6 +637,30 @@ end
 ### Iterators and Enumerable Objects
 
 ### Blocks
+  Os `blocks` assim como é definido são blocos de códigos formados por delimitadores `{ ... }` ou `do ... end`,
+  a convensão que usamos é `{ ... }` para uma linha e `do ... end` para mais de uma linha.
+  O bloco serve para armazenar uma implementação que for desejada, e será executada em um certo momento, com
+  seu pŕoprio escopo.
+  Blocos só podem ser usados com métodos.
+  Eles podem ser executados atráves do `&` chamando na implementação `block.call`, ou também através do `yield`, 
+  o `yield` tem como função executar um bloco anônimo sem precisar ser especificado no método.
+  
+  ```ruby
+  class SpongeBob
+    def is_squarepants?(&block)
+      block.call
+    end
+
+    def i_live_in_ocean?
+      yield
+    end
+  end
+
+  SpongeBob.new.is_squarepants?  { puts true }
+  SpongeBob.new.i_live_in_ocean? do 
+    puts true
+  end
+  ```
 
 ### Altering Control Flow
 
@@ -1276,7 +1300,7 @@ puts SpongeBob.is_squarepants?(SpongeBob.new)
   SpongeBob.new.job
   ```
 
-### Subclassing and Inheritance
+### Heranças
   Herança não é muito diferente em `ruby`, quando você tem um classe `SpongeBob` que herda de `Ocean` dizemos que `SpongeBob` é uma `subclass` e `Ocean` é uma `superclass`.
   Uma classe pode ter infinitas `subclasses` mas apenas uma `superclass`. `ruby` não possui herança múltipla.
   Variáveis de instância, classe e constantes são herdadas e podem ser modificadas. O detalhes se for uma constante é que se estivermos
