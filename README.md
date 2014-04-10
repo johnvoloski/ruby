@@ -1022,25 +1022,37 @@ end
   end
   ```
 
-## Classes and Modules
+## Classes e Módulos
 
-### Defining a Simples Class
+### Definindo uma classe simples
 
-#### Creating the Class
-class SpongeBob
-end
+#### Criando uma classe:
+```ruby
+class SpongeBob; end
+```
 
-#### Instantiating a Class
+#### Instânciando a classe:
+```ruby
+class SpongeBob; end
+
 sb = SpongeBob.new
 
-#### Initializing a Class
+puts sb.class
+puts sb.is_a?(SpongeBob)
+```
+
+#### Definindo o método inicializador de uma classe:
+```ruby
 class SpongeBob
   def initialize(squarepants)
     @squarepants = squarepants
   end
 end
+```
 
 #### Accessors and Attributes
+Provendo os acessos a uma váriavel de instância de forma manual:
+```ruby
 class SpongeBob
   def initialize(squarepants)
     @squarepants = squarepants
@@ -1056,6 +1068,91 @@ end
 sb = SpongeBob.new(true)
 sb.squarepants = false
 puts sb.squarepants
+```
+
+Para prover esses acessos de formá automática o `ruby` fornece os métodos para serem definidos:
+  * attr_reader   - Cria o acesso de leitura 
+  ```ruby
+  class SpongeBob
+    attr_reader :squarepants
+
+    def initialize
+      @squarepants = false
+    end
+  end
+
+  sb = SpongeBob.new
+  puts sb.squarepants
+
+  sb.squarepants = true
+  ```
+  
+  * attr_writer   - Cria o acesso de escrita
+  ```ruby
+  class SpongeBob
+    attr_writer :squarepants
+
+    def initialize
+      @squarepants = false
+    end
+  end
+
+  sb = SpongeBob.new
+  sb.squarepants = true
+
+  puts sb.squarepants
+  ```
+
+  * attr_accessor - Cria o acesso de leitura e escrita
+  ```ruby
+  class SpongeBob
+    attr_accessor :squarepants
+
+    def initialize
+      @squarepants = false
+    end
+  end
+
+  sb = SpongeBob.new
+  sb.squarepants = true
+  puts sb.squarepants
+  ```
+
+### Definindo Operadores:
+Em `ruby` você pode redefinir os operadores de uma classe:
+  * Alguns operadores que podem ser definidos:
+    * ` + `
+    * ` - `
+    * ` * `
+    * ` / `
+    * ` % `
+    * ` -@ `
+    * ` +@ `
+    * ` ~ `
+    * ` ! `
+    * ` = `
+    * ` == `
+    * ` === `
+
+```ruby
+class SpongeBob
+  def initialize
+    @he = 'SpongeBob'
+  end
+
+  def +(value)
+    "#{@he} #{value}"
+  end
+
+  def !
+    "#{@he} isn't SquarePants"
+  end
+end
+
+sb = SpongeBob.new
+puts sb + 'SquarePants'
+puts !sb
+```
 
 ### Method Visibility: Public, Protected, Private
 class SpongeBob
