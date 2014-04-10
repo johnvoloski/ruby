@@ -119,9 +119,64 @@ end
 
 ## Datatype and Objects:
 
-### Booleans and nil
+### True, False and Nil
+  True representa o verdadeiro, False o falso e nil representa a abstenção de valor. Qualquer valor sem ser False, Nil é True.
+```ruby
+  puts true.class
+  puts false.class
+  puts nil.class
+```
+
 ### Numbers
+
+#### Integer
+  Pode ser utilizado o _ para melhor visualização.
+```ruby
+puts 1_000_000_00
+puts 1_000_000_00.class
+```
+
+##### Fixnum
+  São inteiros que se encaixam dentro de 31 bits então sua instância é um Fixnum.
+```ruby
+puts 999999999999999999.class
+```
+
+##### Bignum
+  São inteiros que se encaixam acima de 31 bits então sua instância é um Bignum.
+```ruby
+puts 9999999999999999999.class
+```
+
+#### Float
+  São números que utilizam pontos flutuantes, sua instância é um Float.
+```ruby
+99.99.class
+```
+
+#### Rational
+  São números racionais, sua instância é um Rational.
+```ruby
+  puts Rational(8/4).class
+```
+
 ### Strings
+#### Aspas Simples
+```ruby
+  puts 'Sou uma string com aspas simples e com instância String'.class
+  puts 'Sou uma string com aspas simples'
+  puts 'Sou uma string \' com um "escape"'
+  puts 'Sou uma string quebrada em uma linha \
+        aqui esta minha continuação'
+  puts 'Sou uma string quebrada' \
+       'em multiplas linhas' \
+       'não somente em uma'
+```
+
+#### Aspas Duplas
+  puts "Sou uma string com aspas duplas e com instância String".class
+  puts "Sou uma string com aspas duplas"
+
 ### Symbols
 ### Arrays
 ### Hashes
@@ -623,22 +678,351 @@ end
 ```
 
 ### Exception and Exception Handling
+  Hierarquia da Classe de Exceção do Ruby:
+
+  * Object
+    * Exception
+      * NoMemoryError
+      * ScriptError
+        * LoadError
+        * NotImplementedError
+        * SyntaxError
+      * SecurityError
+      * SignalException
+        * Interrupt
+      * SystemExit
+      * SystemStackError
+      * StandardError
+        * ArgumentError
+        * FiberError
+        * IOError
+          * EOFError
+        * IndexError
+          * KeyError
+          * StopIteration
+        * LocalJumpError
+        * NameError
+          * NoMethodError
+        * RangeError
+          * FloatDomainError
+        * RegexpError
+        * RuntimeError
+        * SystemCallError
+        * ThreadError
+        * TypeError
+        * ZeroDivisionError
+
+  Definindo uma exception class:
+  ```ruby
+  class MyError < StandardError; end
+  ```
+  
+  Levantando uma exception:
+  ```ruby
+    class MyError < StandardError; end
+
+    raise MyError
+    raise MyError, 'Exception'
+  ```
+
+  Tratando exception com `rescue`:
+  ```ruby
+  class MyError < StandardError; end
+
+  begin
+    # Minha implementação aqui.
+    raise MyError if true
+  rescue => ex
+    # Aqui o tratamento da minha exception.
+    puts "#{ex.class}: #{ex.message}"
+  end
+  ```
+
+  Tratando exception com `rescue` pelo tipo:
+  ```ruby
+  class MyError < ArgumentError; end
+
+  begin
+    # Minha implementação aqui.
+    raise MyError if true
+  rescue NoMethodError => ex
+    # Aqui o tratamento de método não definido.
+    puts "NoMethodError: #{ex.class}: #{ex.message}"
+  rescue ArgumentError => ex
+    # Aqui o tratamento de erro nos argumentos.
+    puts "ArgumentError: #{ex.class}: #{ex.message}"
+  end
+  ```
+
+  Quando ocorre um exceção durante um tratamento, então é propagada uma nova exceção.
+
+  Usando o `retry` dentro de um tratamento de exceção:
+  ```ruby
+  tries = 0
+
+  begin
+    tries += 1
+    xMethod
+  rescue NoMethodError => ex
+    puts ex.message
+    retry if tries < 4
+  end
+  ```
+
+  A cláusula `else` geralmente é utilizada para um tratamento genérico onde outros tratamentos utilizando o `rescue` não forma efetivos:
+  ```ruby
+  begin
+    raise StandardError
+  rescue NoMethodError => ex
+    puts "NoMethodError: #{ex.message}"
+  else
+    puts "GenericError"
+  end
+  ```
+
+  A Cláusula `ensure` é utilizada como finalização do tratamento, ela é chama sempre após executar um `rescue` e até mesmo o `else`:
+  ```ruby
+    begin
+      raise NoMethodError
+    rescue NoMethodError => ex
+      puts "NoMethodError: #{ex.message}"
+    ensure
+      puts "E finalizou a exceção."
+    end
+
+    begin
+      raise StandardError
+    rescue NoMethodError => ex
+      puts "NoMethodError: #{ex.message}"
+    else
+      puts "GenericError"
+    ensure
+      puts "E finalizou a exceção."
+    end
+  ```
+
+  Utilizando o `rescue` em um método, classe ou módulo.
+  ```ruby
+  class Patrick; end
+  class SpongeBob; end
+  class Squidward; end
+
+  class NotSpongeBobError < StandardError; end
+  class NotPatrickError < StandardError; end
+
+  def is_squarepants?(name)
+    raise NotSpongeBobError if !name.is_a? SpongeBob
+  rescue
+    raise NotPatrickError if !name.is_a? Patrick
+  else
+    puts "O nome da classe é: {Squidward.name}."
+  ensure
+    puts "Ele também é um personagem."
+  end
+
+  is_squarepants?(Squidward)
+  ```
+
+  Utilizando o `rescue` como modificador:
+  ```ruby
+  puts is_squarepants?(Patrick)
+  puts is_squarepants?(SpongeBob) rescue true
+  ```
 
 ### begin and end
-
-### Threads, Fibers and Continuations
 
 ## Methods, Procs, Lambdas and Closures
 
 ### Defining Simple Methods
+  Definindo um método:
+  ```ruby
+  class SpongeBob; end
+
+  def is_squarepants?(name)
+    name.is_a?(SpongeBob) ? true : false
+  end
+  ```
+
+  Invocando um método:
+  ```ruby
+  class SpongeBob; end
+
+  def is_squarepants?(name)
+    name.is_a?(SpongeBob) ? true : false
+  end
+    
+  is_squarepants?(SpongeBob.new)
+  ```
+
+  Definindo um método Singleton:
+  ```ruby
+  bob = 'SpongeBob'
+  
+  def bob.is_squarepants?
+    true
+  end
+
+  bob.is_squarepants?
+  ```
+
+  Indefinindo um método:
+  ```ruby
+  def is_squarepants?
+    true
+  end
+
+  is_squarepants?
+
+  undef is_squarepants?
+
+  is_squarepants?
+  ```
 
 ### Method Names
+  Por convensão nomes de métodos começam sempre com letra minúscula, podem começar com letra maiúscula mas irão se parecer com uma constante.
+  Quando o nome do método é maior que uma palavra, por convensão utiliza-se `_` para separa as palavras: `is_squarepants?`.
+  A convensão para métodos com `?` no final, são métodos cujo valor retornado sempre será um boleano.
+  A conversão para métodos com `!` no final, são métodos cuja utilização deve ser com cautela, por exemplo, o método `sort` de um `Array`, ele copia
+  o `Array` e ordena, já o método `sort!, efetua o `sort!` no mesmo array o redefinindo.
+  ```ruby
+  class SpongeBob
+    def is_squarepants?
+      @squarepants || false
+    end
+
+    def is_squarepants!
+      @squarepants = true
+    end
+  end
+
+  bob = SpongeBob.new
+  puts bob.is_squarepants?
+  bob.is_squarepants!
+  puts bob.is_squarepants?
+  ```
+
+  Redefinindo os Métodos Operadores:
+  ```ruby
+  class SpongeBob
+    def +(value)
+      "SpongeBob is #{value}"
+    end
+  end
+
+  puts SpongeBob.new + "SquarePants"
+  ```
+
+  Definindo "alias" para os Métodos: (Não é possível fazer "Overloading" em um "alias")
+  ```ruby
+  def is_squarepants?
+    true
+  end
+
+  alias is_sp? is_squarepants?
+
+  puts is_squarepants?
+  puts is_sp?
+  ```
 
 ### Methods and Parentheses
+  O uso de Parenteses só é necessário caso aconteça uma precedência.
 
 ### Method Arguments
+  Lista de Argumentos como Parâmetros:
+  ```ruby
+  def is_squarepants?(name, *args)
+    puts "Name: #{name}"
+    puts "Qualquer outro parâmetro informado: #{args}"
+  end
+
+  is_squarepants?('SpongeBob', true, 'Patrick')
+  ```
+
+  Hash como parâmetro:
+  ```ruby
+  def is_squarepants?(name = 'SpongeBob', options = { squarepants: true })
+    puts name
+    puts options[:squarepants]
+  end
+
+  puts is_squarepants?
+  puts is_squarepants?('Patrick', squarepants: false)
+  ```
+
+  Bloco como parâmetro:
+  
+  Se você prefere um controle explícito sobre o bloco, adicione um parâmetro final com um `&` na frente, então esse parâmetro irá referenciar o bloco, se for passado 
+  para o método, o tipo desse bloco sera um `Proc` ao invés de usar o `yield` você invocará através do método `call`.
+  ```ruby
+  def is_squarepants?(name, &block)
+    block.call(name)
+  end
+
+  puts is_squarepants?('SpongeBob') { |name| puts "#{name} is squarepants" }
+  puts is_squarepants?('Patrick')   { |name| puts "#{name} isn't squarepants" }
+  ```
+  
+  Se você prefere um controle mais específico ainda, defina um parâmetro como sendo o do bloco, o tipo deste parâmetro será um `Proc` e será invocado através do método `call`.
+  ```ruby
+  def is_squarepants?(name, block)
+    block.call(name)
+  end
+  
+  puts is_squarepants?('SpongeBob',  proc { |name| puts "#{name} is squarepants" })
+  puts is_squarepants?('Patrick', proc { |name| puts "#{name} isn't squarepants" })
+  ```
 
 ### Procs and Lambdas
+  Blocos são estruturas sintáticas em Ruby, não são objetos e não tem como os manipular como objetos.
+  Então é possível criar um objeto representante de um bloco. Dependendo de como é criado o objeto,
+  ele é chamado de `proc` ou `lambda`. `Procs` tem um comportamento como o de um bloco, e `Lambdas` tem
+  um comportamento como um método. No entando os dois são instâncias da classe `Proc`.
+
+  Criando Procs:
+  ```ruby
+  p = Proc.new { |adjective| "SpongeBob is #{adjective}" }
+  p.call('SquarePants')
+  
+  p = proc { |adjective| "SpongeBob is #{adjective}" }
+  p.call('SquarePants')
+  ```
+
+  Criando Lambdas:
+  ```ruby
+  l = lambda { |adjective| "SpongeBob is #{adjective}" }
+  l.call('SquarePants')
+
+  l = ->(adjective) { "SpongeBob is #{adjective}" }
+  l.call('SquarePants'
+  ```
+
+  Descubrindo a quantidade de parâmetros obrigatórios de uma `Proc`:
+  ```ruby
+  p = proc { |adjective| "SpongeBob is #{adjective}" }
+  puts p.arity
+
+  l = ->(adjective) { "SpongeBob is #{adjective}" }
+  l.arity
+  ```
+
+  Como diferenciar um `lambda` de um `proc`:
+  O `proc` se parece como um bloco e tem um comportamento de bloco, o `lambda` é levemente modificado para parecer como um método. Para descobrir se o
+  objeto é um `lambda` ou `proc` existe o método `lambda?` que retorna `true` se for um `lambda` e `false` se for um `proc`.
+  O `proc` funciona como um bloco, seu retorno é propagado no contexto e não para o próprio `proc`.
+  O `lambda` funciona como um método, seu retorno é propagado para o próprio `lambda`.
+  ```ruby
+  def is_squarepants?
+    p = proc { puts 'SpongeBob is SquarePants'; return }
+    p.call
+    puts ' and Patrick also'
+  end
+
+  def is_squarepants?
+    p = ->{ puts 'SpongeBob is SquarePants'; return }
+    p.call
+    puts " and Patrick isn't"
+  end
+  ```
 
 ### Closures
 
@@ -650,7 +1034,51 @@ end
 
 ### Defining a Simples Class
 
+#### Creating the Class
+class SpongeBob
+end
+
+#### Instantiating a Class
+sb = SpongeBob.new
+
+#### Initializing a Class
+class SpongeBob
+  def initialize(squarepants)
+    @squarepants = squarepants
+  end
+end
+
+#### Accessors and Attributes
+class SpongeBob
+  def initialize(squarepants)
+    @squarepants = squarepants
+  end
+
+  def squarepants; @squarepants; end
+
+  def squarepants=(value)
+    @squarepants = value
+  end
+end
+
+sb = SpongeBob.new(true)
+sb.squarepants = false
+puts sb.squarepants
+
 ### Method Visibility: Public, Protected, Private
+class SpongeBob
+  def is_friend?(friend_name)
+    friend_name.is_a? Patrick
+  end
+
+  protected :is_friend?
+
+  def is_squarepants?(name)
+    name.is_a? SpongeBob
+  end
+
+  private :is_squarepants?
+end
 
 ### Subclassing and Inheritance
 
