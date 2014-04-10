@@ -107,6 +107,9 @@ end
   * [AppFog](https://www.appfog.com/)
   * [Amazon](https://aws.amazon.com/pt/ec2/?nc1=h_ls)
 
+## Integração Contínua:
+  * [GO](http://www.thoughtworks.com/products/go-continuous-delivery)
+
 ## Gerênciadores de Versões Ruby:
   * [pik](https://github.com/vertiginous/pik) - Windows
   * [rmv](http://rvm.io/) - Unix
@@ -1274,21 +1277,199 @@ puts SpongeBob.is_squarepants?(SpongeBob.new)
   ```
 
 ### Subclassing and Inheritance
+  Herança não é muito diferente em `ruby`, quando você tem um classe `SpongeBob` que herda de `Ocean` dizemos que `SpongeBob` é uma `subclass` e `Ocean` é uma `superclass`.
+  Uma classe pode ter infinitas `subclasses` mas apenas uma `superclass`. `ruby` não possui herança múltipla.
+  Variáveis de instância, classe e constantes são herdadas e podem ser modificadas. O detalhes se for uma constante é que se estivermos
+  criando alguma instância na `superclass` dela, a instância da `subclass` será diferente, pois sera criada uma nova.
 
-### Object Creation and Initialization
+  * Herança de métodos:
+  ```ruby
+  class Ocean
+    def has_squarepants_here?
+      true
+    end
+  end
+
+  class SpongeBob < Ocean; end
+
+  puts SpongeBob.new.has_squarepants_here?
+  ```
+
+  * Sobrescrevendo métodos:
+  ```ruby
+  class Ocean
+    def has_squarepants_here?
+      false
+    end
+  end
+
+  class SpongeBob > Ocean
+    def has_squarepants_here?
+      true
+    end
+  end
+
+  puts SpongeBob.new.has_squarepants_here?
+  ```
+
+  * Sobrescrevendo métodos privados e protegidos:
+  ```ruby
+  class Ocean
+    private
+
+    def has_squarepants_here?
+      false
+    end
+
+    protected
+
+    def whoiam?
+      'Ocean'
+    end
+  end
+
+  class SpongeBob > Ocean
+    def has_squarepants_here?
+      true
+    end
+
+    def whoiam?
+      'SpongeBob'
+    end
+  end
+
+  puts SpongeBob.new.has_squarepants_here?
+  puts SpongeBob.new.whoiam?
+  ```
+
+  * Algumas vezes necessitamos sobrescrever um método mas continuar com a implementação antiga, então usamos o `super`: (chaining)
+  ```ruby
+  class Ocean
+    def initialize(whoiam = 'Ocean')
+      @whoiam = "I am #{whoiam}"
+    end
+  end
+
+  class SpongeBob < Ocean
+    attr_accessor :presentation
+
+    def initialize
+      super('SpongeBob')
+
+      @presentation = "#{@whoiam}, and I live in the ocean."
+    end
+  end
+
+  puts SpongeBob.new.presentation
+  ```
 
 ### Modules
+  Módulos são um coleção de módulos, constantes, classes e variáveis de classe.
+  Um módulo não é instânciavel e não possui herança.
+  Módulos usam `namespaces` e `mixins`, classes podem usar `namespaces` assim como os módulos, mas classes não usam `mixins`.
+  ```ruby
+  module Ocean
+    def self.spongebob_live_here?
+      true
+    end
+
+    def self.patrick_live_here?
+      true
+    end
+
+    class SpongeBob
+      def whoiam?
+        'SpongeBob'
+      end
+    end
+
+    class Patrick
+      def whoiam?
+        'Patrick'
+      end
+    end
+  end
+
+  puts Ocean::SpongeBob.new.whoiam?
+  puts Ocean.spongebob_live_here?
+
+  puts Ocean::Patrick.new.whoiam?
+  puts Ocean.patrick_live_here?
+  ```
+  A diferença de mixins e herança é apenas que quando uma classe inclui um módulo ela não se torna filha deste módulo, 
+  apenas implementa os seus métodos.
+  Os módulos e os mixins:
+  ```ruby
+  module Ocean
+    def self.whoiam?
+      'Ocean'
+    end
+
+    def i_live_in_ocean?
+      true
+    end
+  end
+
+  class SpongeBob
+    include Ocean
+
+    def whoiam?
+      'SpongeBob'
+    end
+  end
+
+  sb = SpongeBob.new
+  puts sb.whoiam?
+  puts sb.i_live_in_ocean?
+
+  puts Ocean.whoiam?
+  ```
 
 ### Loading and Requiring Modules
+  * $LOAD_PATH ou $: 
+    * Variável global que contém um array com referência dos arquivos.
+
+  * require 
+    * Faz a inclusão e a leitura do arquivo.
+  ```ruby
+  require 'some_file'
+  ```
+
+  * require_relative 
+    * É utilizando quando existe a necessidade de referênciar um diretório/arquivo. Faz a leitura do arquivo.
+  ```ruby
+  require_relative 'some_path/some_file'
+  ```
+
+  * load
+    * Tem um comportamento semelhante ao `require`, a diferença é que necessita da extensão do arquivo, e pode ser executada diversas vezes.
+  ```ruby
+  load 'some_path/some_file.rb'
+  ```
+
+  * autoload
+    * Tem um comportamento semelhante ao `require`, porém só faz a leitura do arquivo quando acessado pela primeira vez.
+  ```ruby
+  autoload :SomeClass, 'some_class'
+  ```
 
 ### Singleton Methods and the Eigenclass
+Todo objeto do Ruby está associado a duas classes: a classe que a instanciou e uma classe anônima, escondida, específica do objeto. Esta classe anônima é chamada de Singleton Class, mas antes de ter um nome oficial também era chamada de anonymous class, metaclass, eigenclass ou ghost class.
+A sintaxe mais comum para acessar a classe Singleton é:
+```ruby
+class SpongeBob
+  class << self
+    def whoiam?
+      'SpongeBob'
+    end
+  end
+end
 
-### Method Lookup
 
-### Constant Lookup
-
-Perguntas?
-============================================
+puts SpongeBob.whoiam?
+puts SpongeBob.singleton_methods
+```
+Toda vez que injeta métodos em um objeto, eles são adicionados como métodos singleton. O que é realmente importante saber é que estes métodos pertecem unicamente ao objeto em que foram definidos, não afetando nenhum outro objeto da hieraquia.
 
 Problema!
 ============================================
