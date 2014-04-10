@@ -187,23 +187,30 @@ puts 9999999999999999999.class
 ## Expressions and Operators:
 
 ### Global Variables
-  `Variáveis globais começam com $. Não inicializadas seu valor padrão é nil.`
+  * Variáveis globais começam com $. Não inicializadas seu valor padrão é nil.
+  * Elas são visíveis de qualquer lugar.
   ![Global Variables](https://github.com/johnvoloski/ruby/raw/master/images/source/global_variables.png "Global Variables")
 
 ### Instance Variables
-  `Variáveis de instância começam com @. Não inicializadas seu valor padrão é nil.`
+  * Variáveis de instância começam com @. Não inicializadas seu valor padrão é nil.
+  * Elas são visíveis apenas dentro da instância, compartilhada entre os métodos de instância.
+  * Elas podem ser acessadas externamente criando um `attr`.
   ![Instance Variables](https://github.com/johnvoloski/ruby/raw/master/images/source/instance_variables.png "Instance Variables")
 
 ### Class Variables:
-  `Variáveis de classe começam com @@. Devem ser inicializadas.`
+  * Variáveis de classe começam com @@. Devem ser inicializadas.
+  * Elas são visíveis e compartilhadas entre métodos de classe, métodos de instância e classes do mesmo tipo.
+  * Elas são encapsuladas, só podem ser acessadas e usadas na implementação e não de fora.
   ![Class Variables](https://github.com/johnvoloski/ruby/raw/master/images/source/class_variables.png "Class Variables")
 
 ### Local Variables:
-  `Variáveis locais começam com uma letra minúscula ou _ . O escopo de uma variável local varia de classe, módulo, método ou a abertura e fechamento de um bloco, que corresponde ao final de seu ciclo.`
+  * Variáveis locais começam com uma letra minúscula ou _ . 
+  * O escopo de uma variável local varia de classe, módulo, método ou a abertura e fechamento de um bloco, que corresponde ao final de seu ciclo.
   ![Local Variables](https://github.com/johnvoloski/ruby/raw/master/images/source/local_variables.png "Local Variables")
 
 ### Constants
-  `Constantes começam com uma letra maiúscula. Quando definidas dentro de uma classe ou módulo podem ser acessadas somente dentro dos mesmos, e as definidas fora de uma classe ou módulo podem ser acessadas globalmente. Costantes também não podem ser definidas dentro de métodos.`
+  Constantes começam com uma letra maiúscula. Constantes podem ser visualizadas internamente de uma classe ou módulo, apenas pelo seu nome,
+  ou externamente através do seu módulo/classe mais o seu nome.
   ![Constants](https://github.com/johnvoloski/ruby/raw/master/images/source/constants.png "Constants")
 
 ### Operators:
@@ -1154,20 +1161,117 @@ puts sb + 'SquarePants'
 puts !sb
 ```
 
-### Method Visibility: Public, Protected, Private
+### Método de classe:
+Métodos de Classe são métodos dos quais não dependem de uma instância ativa da classe.
+
+```ruby
 class SpongeBob
-  def is_friend?(friend_name)
-    friend_name.is_a? Patrick
+  def Point.is_squarepants?(instance)
+    instance.is_a?(SpongeBob)
+  end
+  
+  def self.is_squarepants?(instance)
+    instance.is_a?(SpongeBob)
   end
 
-  protected :is_friend?
-
-  def is_squarepants?(name)
-    name.is_a? SpongeBob
+  class << self
+    def is_squarepants?(instance)
+      instance.is_a?(SpongeBob)
+    end
   end
-
-  private :is_squarepants?
 end
+
+puts SpongeBob.is_squarepants?(SpongeBob.new)
+```
+
+### Método de instância:
+Método de Instância são os métodos dos quais dependem de uma instância ativa da classe.
+
+```ruby
+class SpongeBob
+  def is_squarepants?(instance)
+    instance.is_a?(SpongeBob)
+  end
+end
+
+puts SpongeBob.is_squarepants?(SpongeBob.new)
+```
+
+### Method Visibility: Public, Protected, Private
+  * Métodos de instância podem ser definidos públicos com este comando:
+  ```ruby
+  public_class_method :squarepants
+  ```
+  
+  * Todos métodos normalmente são públicos, exceto o `initialize` que é sempre privado. Os métodos públicos podem ser 
+  invocados por qualquer um, não existe restrições.
+  ```ruby
+  class SpongeBob
+    def is_squarepants?
+      self.is_a? SpongeBob
+    end
+  end
+
+  sb = SpongeBob.new
+  sb.is_squarepants?
+  ```
+
+  * Métodos de instância podem ser definidos privados com este comando:
+  ```ruby
+  private_class_method :squarepants
+  ```
+  
+  * Os métodos privados, são métodos que só podem ser acessados internamente.
+  ```ruby
+  class KrustyKrab
+    private
+    
+    def is_employee?(instance)
+      instance.is_a?(SpongeBob)
+    end
+
+    # Pode ser definido privado desta maneira também:
+    # private :is_employee?
+  end
+
+  class SpongeBob < KrustyKrab
+    def job
+      puts is_employee?(self)
+      puts self.is_employee?(self) rescue puts 'Não pode chamar o método privado por uma referência.'
+      puts SpongeBob.new.is_employee?(SpongeBob.new) rescue puts 'Não pode chamar o método privado externamente.'
+    end
+  end
+
+  SpongeBob.new.job
+  ```
+  
+  * Os métodos protegidos, são métodos iguais ao privados, só difere na medida em que pode ser explicitamente chamado em qualquer instância da classe.
+  ```ruby
+  class KrustyKrab
+    protected
+    
+    def is_employee?(instance)
+      instance.is_a?(SpongeBob)
+    end
+
+    # Pode ser definido protegido desta maneira também:
+    # protected :is_employee?
+  end
+
+  class SpongeBob < KrustyKrab
+    def job
+      puts is_employee?(self)
+
+      puts self.is_employee?(self)
+      puts 'Pode chamar o método protegido por uma referência.'
+
+      puts SpongeBob.new.is_employee?(SpongeBob.new)
+      puts 'Pode chamar o método protegido externamente.'
+    end
+  end
+
+  SpongeBob.new.job
+  ```
 
 ### Subclassing and Inheritance
 
