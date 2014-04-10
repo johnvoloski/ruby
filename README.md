@@ -829,8 +829,6 @@ end
   puts is_squarepants?(SpongeBob) rescue true
   ```
 
-### begin and end
-
 ## Methods, Procs, Lambdas and Closures
 
 ### Defining Simple Methods
@@ -1023,12 +1021,6 @@ end
     puts " and Patrick isn't"
   end
   ```
-
-### Closures
-
-### Method Objects
-
-### Funcional Programming
 
 ## Classes and Modules
 
