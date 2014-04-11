@@ -1863,6 +1863,12 @@ puts SpongeBob.singleton_methods
 ```
 Toda vez que injeta métodos em um objeto, eles são adicionados como métodos singleton. O que é realmente importante saber é que estes métodos pertecem unicamente ao objeto em que foram definidos, não afetando nenhum outro objeto da hieraquia.
 
+## Testes:
+  
+  * [MiniTest](https://github.com/seattlerb/minitest)
+  * [TestUnit](http://test-unit.rubyforge.org/)
+  * [RSpec](https://github.com/rspec/rspec)
+
 Problema!
 ============================================
 
