@@ -133,8 +133,13 @@ end
   True representa o verdadeiro, False o falso e nil representa a abstenção de valor. Qualquer valor sem ser False e Nil é True.
 ```ruby
 puts true.class
+# TrueClass
+
 puts false.class
+# FalseClass
+
 puts nil.class
+# NilClass
 ```
 
 ### Numbers:
@@ -143,31 +148,38 @@ puts nil.class
   Pode ser utilizado o _ para melhor visualização.
 ```ruby
 puts 1_000_000_00
+# 100000000
+
 puts 1_000_000_00.class
+# Fixnum
 ```
 
 ##### Fixnum:
   São inteiros que se encaixam dentro de 31 bits então sua instância é um Fixnum.
 ```ruby
 puts 999999999999999999.class
+# Fixnum
 ```
 
 ##### Bignum:
   São inteiros que se encaixam acima de 31 bits então sua instância é um Bignum.
 ```ruby
 puts 9999999999999999999.class
+# Bignum
 ```
 
 #### Float:
   São números que utilizam pontos flutuantes, sua instância é um Float.
 ```ruby
 99.99.class
+# Float
 ```
 
 #### Rational:
   São números racionais, sua instância é um Rational.
 ```ruby
 puts Rational(8/4).class
+# Rational
 ```
 
 ### Strings:
@@ -175,25 +187,34 @@ puts Rational(8/4).class
 #### Aspas Simples:
 ```ruby
 puts 'Sou uma string com aspas simples e com instância String'.class
+# String
+
 puts 'Sou uma string com aspas simples'
+# Sou uma string com aspas simples
+
 puts 'Sou uma string \' com um "escape"'
-puts 'Sou uma string quebrada em uma linha \
-      aqui esta minha continuação'
+# Sou uma string ' com um "escape"
+
 puts 'Sou uma string quebrada' \
      'em multiplas linhas' \
      'não somente em uma'
+# Sou uma string quebrada em multiplas linhas não somente em uma
 ```
 
 #### Aspas Duplas:
 ```ruby
 puts "Sou uma string com aspas duplas e com instância String".class
+# String
+
 puts "Sou uma string com aspas duplas"
+# Sou uma string com aspas duplas
 ```
 
 Interpolações em string são feitas através do `#{}`:
 ```ruby
 adjective = 'SquarePants'
 puts "SpongeBob #{adjective}"
+# SpongeBob SquarePants
 ```
 
 ### Symbols:
@@ -202,9 +223,12 @@ Um símbolo tem uma comparação muito mais rápida que uma string.
 Símbolos são ideais para definerem uma chave dentro de um hash, pois é um valor que não será alterado.
 ```ruby
 friends = ['SpongeBob', 'Patrick']
-friends = [:SpongeBob, :Patrick]
-
 puts friends
+# ["SpongeBob", "Patrick"]
+
+friends = [:SpongeBob, :Patrick]
+puts friends
+# [:SpongeBob, :Patrick]
 ```
 
 ### Arrays:
@@ -212,7 +236,10 @@ Um `array` é uma sequência de valores acessíveis pela sua posição ou indíc
 Em `ruby` o valor do primeiro indíce é 0.
 ```ruby
 puts [1, 2, 3, 4]
-puts Array.new(4) { |i| i + 1 }
+# [1, 2, 3, 4]
+
+puts Array.new(4)
+# [nil, nil, nil, nil]
 ```
 
 ### Hashes:
@@ -221,12 +248,15 @@ Um `hash` em `ruby` é composto por objetos formados por `chave` => `valor`.
 ```ruby
 sb = { 'SpongeBob' => 'SquarePants' }
 puts sb['SpongeBob']
+# SquarePants
 
 sb = { :SpongeBob => 'SquarePants' }
 puts sb[:SpongeBob]
+# SquarePants
 
 sb = { SpongeBob: 'SquarePants' }
 puts sb[:SpongeBob]
+# SquarePants
 ```
 
 ### Ranges:
@@ -234,16 +264,22 @@ O `range` representa o intervalo entre um início e um final.
 ```ruby
 # Irá gerar um intervalo de 1 à 10 incluindo o 10.
 puts 1..10
+# 1..10
 
 # Irá gerar um intervalo de 1 à 10 excluíndo o 10.
 puts 1...10
+# 1...10
 
 # Pode ser usado com strings também.
-puts a..z
+puts 'a'..'f'
+# 'a'..'f'
 ```
 
-### Regular Expressions:
+### Expressões Regulares:
+  * Em `ruby` as expressões regulares são representadas por `/`
 ```ruby
+puts 'SpongeBob'.gsub(/[aeiou]/, '')
+# SpngBb
 ```
 
 ## Expressões e Operadores:
@@ -271,11 +307,14 @@ class HelloWorldTwo
 end
 
 classOne = HelloWorldOne.new
-classOne.output
 classOne.increment
+classOne.output
+# 1
 
 classTwo = HelloWorldTwo.new
+classOne.increment
 classTwo.output
+# 2
 ```
 
 ### Variáveis de Instância:
@@ -304,7 +343,10 @@ class HelloWorldTwo
 end
 
 HelloWorldOne.new("SpongeBob SquarePants").output
+# SpongeBob SquarePants
+
 HelloWorldTwo.new("Patrick").output
+# Patrick
 ```
 
 ### Variáveis de Classe:
@@ -327,9 +369,11 @@ end
 one = HelloWorldOne.new
 one.assign_variable("SpongeBob SquarePants")
 one.output
+# SpongeBob SquarePants
 
 two = HelloWorldOne.new
 two.output
+# SpongeBob SquarePants
 ```
 
 ### Variáveis Locais:
@@ -343,6 +387,7 @@ class HelloWorld
 end
 
 HelloWorld.new('SpongeBob SquarePants')
+# SpongeBob SquarePants
 ```
 
 ### Constants:
@@ -358,7 +403,10 @@ class HelloWorld
 end
 
 puts HelloWorld.new.output
+# Hello SpongeBob SquarePants
+
 puts HelloWorld::HELLO_WORLD
+# Hello SpongeBob SquarePants
 ```
 
 ### Operadores:
@@ -372,6 +420,7 @@ a = 10
 b = 20
 
 puts a + b
+# 30
 ```
 
 * `-`
@@ -382,6 +431,7 @@ a = 10
 b = 20
 
 puts a - b
+# -10
 ```
 
 * ```*```
@@ -392,6 +442,7 @@ a = 10
 b = 20
 
 puts a * b
+# 200
 ```
 
 * `/`
@@ -402,6 +453,7 @@ a = 10
 b = 20
 
 puts b / a
+# 2
 ```
 
 * `%`
@@ -412,6 +464,7 @@ a = 10
 b = 20
 
 puts b % a
+# 0
 ```
 
 * ```*```
@@ -419,9 +472,10 @@ puts b % a
 # Executa o cálculo exponencial sobre o valor da variável a quando o valor de seu expoente é o valor da variável b e retorna o resultado.
 
 a = 10
-b = 20
+b = 2
 
 puts a**b
+# 100
 ```
 
 #### Comparação:
@@ -433,6 +487,7 @@ a = 10
 b = 20
 
 puts (a == b)
+# false
 ```
 
 * `!=`
@@ -443,6 +498,7 @@ a = 10
 b = 20
 
 puts (a != b)
+# true
 ```
 
 * ```>```
@@ -453,6 +509,7 @@ a = 10
 b = 20
 
 puts (a > b)
+# false
 ```
 
 * ```<```
@@ -463,6 +520,7 @@ a = 10
 b = 20
 
 puts (a < b)
+# true
 ```
 
 * ```>=```
@@ -473,6 +531,7 @@ a = 10
 b = 20
 
 puts (a >= b)
+# false
 ```
 
 * ```<=```
@@ -483,6 +542,7 @@ a = 10
 b = 20
 
 puts (a <= b)
+# true
 ```
 
 * ```<=>```
@@ -493,6 +553,7 @@ a = 10
 b = 20
 
 puts (a <=> b)
+# -1
 ```
 
 * `===`
@@ -501,6 +562,7 @@ a = 10
 b = 20
 
 puts (a === b)
+# true
 ```
 
 * `.eql?`
@@ -511,6 +573,7 @@ a = 10
 b = 20
 
 puts a.eql?(b)
+# false
 ```
 
 * `.equal?`
@@ -521,6 +584,7 @@ a = 10
 b = 20
 
 puts a.equal?(b)
+# false
 ```
 
 #### Atribuição:
@@ -532,6 +596,7 @@ a = 10
 b = a
 
 puts b
+# 10
 ```
 
 * `+=`
@@ -543,6 +608,7 @@ b = 10
 b += a
 
 puts b
+# 20
 ```
 
 * `-=`
@@ -554,6 +620,7 @@ b = 10
 b -= a
 
 puts b
+# 0
 ```
 
 * ```*=```
@@ -565,6 +632,7 @@ b = 10
 b *= a
 
 puts b
+# 100
 ```
 
 * `/=`
@@ -576,6 +644,7 @@ b = 10
 b /= a
 
 puts b
+# 1
 ```
 
 * `%=`
@@ -587,6 +656,7 @@ b = 10
 b %= a
 
 puts b
+# 0
 ```
 
 * ```**=```
@@ -594,10 +664,11 @@ puts b
 # Atribui calculando o valor exponencial do valor da variável a por o valor da váriavel b.
 
 a = 10
-b = 10
+b = 2
 b **= a
 
 puts b
+# 1024
 ```
 
 #### Atribuição Múltipla:
@@ -616,7 +687,10 @@ a = true
 b = true
 
 puts 'True' if a and b
+# True
+
 puts 'True' if a && b
+# True
 ```
 
 * `or` ou `||`
@@ -627,7 +701,10 @@ a = true
 b = false
 
 puts 'True' if a or b
+# True
+
 puts 'True' if a || b
+# True
 ```
 
 * `!` ou `not`
@@ -638,7 +715,10 @@ a = false
 b = false
 
 puts 'True' if !(a && b)
+# True
+
 puts 'True' if not(a && b)
+# True
 ```
 
 #### Ternário:
@@ -649,6 +729,7 @@ puts 'True' if not(a && b)
 condition = false
 
 puts conditidion ? true : false
+# true
 ```
 
 #### Intervalo:
@@ -657,6 +738,7 @@ puts conditidion ? true : false
 # Cria um intervalo entre o ponto de partida e o ponto de chegada incluido ele.
 
 puts (1..10).to_a
+# 1, 2, 3, 4, 5, 6, 7, 8, 9, 10
 ```
 
 * `...`
@@ -664,6 +746,7 @@ puts (1..10).to_a
 # Cria um intervalo entre o ponto de partida e o ponto de chegada excluíndo ele.
 
 puts (1...10).to_a
+# 1, 2, 3, 4, 5, 6, 7, 8, 9
 ```
 
 ## Controle de Estruturas e Afirmação:
@@ -677,10 +760,11 @@ conditional = 1
 if conditional > 2
   puts 'conditional is greater than 2'
 elsif conditional <= 2 && conditional != 0
-  puts 'conditional  is 1'
+  puts 'conditional is 1'
 else
   puts 'I can`t guess the number'
 end
+# conditional is 1
 ```
 
 #### if modificador:
@@ -688,6 +772,7 @@ end
 conditional = true
 
 puts 'Is true.' if conditional
+# Is true
 ```
 
 #### unless afirmação:
@@ -699,6 +784,7 @@ unless conditional > 2
 else
   puts 'conditional is greater than 2'
 end
+# conditional is less than 2
 ```
 
 #### unless modificador:
@@ -706,6 +792,7 @@ end
 conditional = false
 
 puts 'Is false.' unless conditional
+# Is false
 ```
 
 #### case afirmação:
@@ -724,6 +811,7 @@ when 10
 else
   puts 'I can`t guess the number'
 end
+# is 10
 ```
 
 ### Laços
@@ -737,6 +825,7 @@ while a < b do
   puts a
   a += 1
 end
+# 0, 1, 2, 3, 4
 ```
 
 #### While modificador:
