@@ -115,15 +115,20 @@ end
   * [rmv](http://rvm.io/) - Unix
   * [rbenv](http://rbenv.org/) - Unix
 
-## The Structure and Execution of Ruby Programs
+## Comentários:
+```ruby
+# SpongeBob SquarePants.
 
-### Comments:
-  ![Comments](https://github.com/johnvoloski/ruby/raw/master/images/source/comments.png "Comments")
+=begin
+  SpongeBob SquarePants.
+  Patrick isn't SquarePants.
+=end
+```
 
-## Datatype and Objects:
+## Tipos de Dados:
 
 ### True, False and Nil
-  True representa o verdadeiro, False o falso e nil representa a abstenção de valor. Qualquer valor sem ser False, Nil é True.
+  True representa o verdadeiro, False o falso e nil representa a abstenção de valor. Qualquer valor sem ser False e Nil é True.
 ```ruby
   puts true.class
   puts false.class
@@ -177,46 +182,183 @@ puts 9999999999999999999.class
 ```
 
 #### Aspas Duplas
-  puts "Sou uma string com aspas duplas e com instância String".class
-  puts "Sou uma string com aspas duplas"
+```ruby
+puts "Sou uma string com aspas duplas e com instância String".class
+puts "Sou uma string com aspas duplas"
+```
+
+Interpolações em string são feitas através do `#{}`:
+```ruby
+adjective = 'SquarePants'
+puts "SpongeBob #{adjective}"
+```
 
 ### Symbols
+Um símbolo é um identificador único no ruby. O símbolo referencia ele mesmo.
+Um símbolo tem uma comparação muito mais rápida que uma string.
+Símbolos são ideais para definerem uma chave dentro de um hash, pois é um valor que não será alterado.
+```ruby
+friends = ['SpongeBob', 'Patrick']
+friends = [:SpongeBob, :Patrick]
+
+puts friends
+```
+
 ### Arrays
+Um `array` é uma sequência de valores acessíveis pela sua posição ou indíce.
+Em `ruby` o valor do primeiro indíce é 0.
+```ruby
+puts [1, 2, 3, 4]
+puts Array.new(4) { |i| i + 1 }
+```
+
 ### Hashes
+Um `hash` em `ruby` é composto por objetos formados por `chave` => `valor`.
+
+```ruby
+sb = { 'SpongeBob' => 'SquarePants' }
+puts sb['SpongeBob']
+
+sb = { :SpongeBob => 'SquarePants' }
+puts sb[:SpongeBob]
+
+sb = { SpongeBob: 'SquarePants' }
+puts sb[:SpongeBob]
+```
+
 ### Ranges
+O `range` representa o intervalo entre um início e um final.
+```ruby
+# Irá gerar um intervalo de 1 à 10 incluindo o 10.
+puts 1..10
+
+# Irá gerar um intervalo de 1 à 10 excluíndo o 10.
+puts 1...10
+
+# Pode ser usado com strings também.
+puts a..z
+```
+
 ### Regular Expressions
-### Objects
+```ruby
+```
 
-## Expressions and Operators:
+## Expressões e Operadores:
 
-### Global Variables
+### Variáveis Globais:
   * Variáveis globais começam com $. Não inicializadas seu valor padrão é nil.
   * Elas são visíveis de qualquer lugar.
-  ![Global Variables](https://github.com/johnvoloski/ruby/raw/master/images/source/global_variables.png "Global Variables")
+```ruby
+$global_variable = 0
 
-### Instance Variables
+class HelloWorldOne
+  def increment
+    $global_variable += 1
+  end
+
+  def output
+    puts $global_variable
+  end
+end
+
+class HelloWorldTwo
+  def output
+    puts $global_variable
+  end
+end
+
+classOne = HelloWorldOne.new
+classOne.output
+classOne.increment
+
+classTwo = HelloWorldTwo.new
+classTwo.output
+```
+
+### Variáveis de Instância:
   * Variáveis de instância começam com @. Não inicializadas seu valor padrão é nil.
   * Elas são visíveis apenas dentro da instância, compartilhada entre os métodos de instância.
   * Elas podem ser acessadas externamente criando um `attr`.
-  ![Instance Variables](https://github.com/johnvoloski/ruby/raw/master/images/source/instance_variables.png "Instance Variables")
+```ruby
+class HelloWorldOne
+  def initialize(value)
+    @instance_variable = value
+  end
 
-### Class Variables:
+  def output
+    puts @instance_variable
+  end
+end
+
+class HelloWorldTwo
+  def initialize(value)
+    @instance_variable = value
+  end
+
+  def output
+    puts @instance_variable
+  end
+end
+
+HelloWorldOne.new("SpongeBob SquarePants").output
+HelloWorldTwo.new("Patrick").output
+```
+
+### Variáveis de Classe:
   * Variáveis de classe começam com @@. Devem ser inicializadas.
   * Elas são visíveis e compartilhadas entre métodos de classe, métodos de instância e classes do mesmo tipo.
   * Elas são encapsuladas, só podem ser acessadas e usadas na implementação e não de fora.
-  ![Class Variables](https://github.com/johnvoloski/ruby/raw/master/images/source/class_variables.png "Class Variables")
+```ruby
+class HelloWorldOne
+  @@class_variable = ''
 
-### Local Variables:
+  def assign_variable(value)
+    @@class_variable = value
+  end
+
+  def output
+    puts @@class_variable
+  end
+end
+
+one = HelloWorldOne.new
+one.assign_variable("SpongeBob SquarePants")
+one.output
+
+two = HelloWorldOne.new
+two.output
+```
+
+### Variáveis Locais:
   * Variáveis locais começam com uma letra minúscula ou _ . 
   * O escopo de uma variável local varia de classe, módulo, método ou a abertura e fechamento de um bloco, que corresponde ao final de seu ciclo.
-  ![Local Variables](https://github.com/johnvoloski/ruby/raw/master/images/source/local_variables.png "Local Variables")
+```ruby
+class HelloWorld
+  def initialize(value)
+    puts value
+  end
+end
+
+HelloWorld.new('SpongeBob SquarePants')
+```
 
 ### Constants
-  Constantes começam com uma letra maiúscula. Constantes podem ser visualizadas internamente de uma classe ou módulo, apenas pelo seu nome,
-  ou externamente através do seu módulo/classe mais o seu nome.
-  ![Constants](https://github.com/johnvoloski/ruby/raw/master/images/source/constants.png "Constants")
+  * Constantes começam com uma letra maiúscula. 
+  * Constantes podem ser visualizadas internamente de uma classe ou módulo, apenas pelo seu nome, ou externamente através do seu módulo/classe mais o seu nome.
+```ruby
+class HelloWorld
+  HELLO_WORLD = 'Hello SpongeBob SquarePants'
 
-### Operators:
+  def output
+    HELLO_WORLD
+  end
+end
+
+puts HelloWorld.new.output
+puts HelloWorld::HELLO_WORLD
+```
+
+### Operadores:
 
 #### Aritimético
 * `+`
@@ -521,9 +663,9 @@ puts (1..10).to_a
 puts (1...10).to_a
 ```
 
-## Statements and Control Structures
+## Controle de Estruturas
 
-### Conditionals
+### Condicionais:
 
 #### if, else statement:
 ```ruby
@@ -581,7 +723,7 @@ else
 end
 ```
 
-### Loops
+### Laços
 
 #### While statement:
 ```ruby
@@ -636,7 +778,7 @@ end
 
 ### Iterators and Enumerable Objects
 
-### Blocks
+### Blocos
   Os `blocks` assim como é definido são blocos de códigos formados por delimitadores `{ ... }` ou `do ... end`,
   a convensão que usamos é `{ ... }` para uma linha e `do ... end` para mais de uma linha.
   O bloco serve para armazenar uma implementação que for desejada, e será executada em um certo momento, com
@@ -662,7 +804,7 @@ end
   end
   ```
 
-### Altering Control Flow
+### Alteradores de Controle de Fluxo
 
 #### Return
 ```ruby
@@ -711,7 +853,7 @@ rescue
 end
 ```
 
-### Exception and Exception Handling
+### Exceções e Tratamentos:
   Hierarquia da Classe de Exceção do Ruby:
 
   * Object
@@ -863,9 +1005,9 @@ end
   puts is_squarepants?(SpongeBob) rescue true
   ```
 
-## Methods, Procs, Lambdas and Closures
+## Métodos, Procs e Lambdas
 
-### Defining Simple Methods
+### Definindo métodos simples:
   Definindo um método:
   ```ruby
   class SpongeBob; end
@@ -910,7 +1052,7 @@ end
   is_squarepants?
   ```
 
-### Method Names
+### Nomes de Métodos:
   Por convensão nomes de métodos começam sempre com letra minúscula, podem começar com letra maiúscula mas irão se parecer com uma constante.
   Quando o nome do método é maior que uma palavra, por convensão utiliza-se `_` para separa as palavras: `is_squarepants?`.
   A convensão para métodos com `?` no final, são métodos cujo valor retornado sempre será um boleano.
@@ -956,10 +1098,7 @@ end
   puts is_sp?
   ```
 
-### Methods and Parentheses
-  O uso de Parenteses só é necessário caso aconteça uma precedência.
-
-### Method Arguments
+### Argumentos em Métodos
   Lista de Argumentos como Parâmetros:
   ```ruby
   def is_squarepants?(name, *args)
@@ -1004,7 +1143,7 @@ end
   puts is_squarepants?('Patrick', proc { |name| puts "#{name} isn't squarepants" })
   ```
 
-### Procs and Lambdas
+### Procs e Lambdas
   Blocos são estruturas sintáticas em Ruby, não são objetos e não tem como os manipular como objetos.
   Então é possível criar um objeto representante de um bloco. Dependendo de como é criado o objeto,
   ele é chamado de `proc` ou `lambda`. `Procs` tem um comportamento como o de um bloco, e `Lambdas` tem
@@ -1058,7 +1197,7 @@ end
 
 ## Classes e Módulos
 
-### Definindo uma classe simples
+### Definindo uma classe simples:
 
 #### Criando uma classe:
 ```ruby
@@ -1084,7 +1223,7 @@ class SpongeBob
 end
 ```
 
-#### Accessors and Attributes
+#### Acessos e Atributos:
 Provendo os acessos a uma váriavel de instância de forma manual:
 ```ruby
 class SpongeBob
@@ -1224,7 +1363,7 @@ end
 puts SpongeBob.is_squarepants?(SpongeBob.new)
 ```
 
-### Method Visibility: Public, Protected, Private
+### Visibilidade de Métodos: Public, Protected, Private
   * Métodos de instância podem ser definidos públicos com este comando:
   ```ruby
   public_class_method :squarepants
@@ -1387,7 +1526,7 @@ puts SpongeBob.is_squarepants?(SpongeBob.new)
   puts SpongeBob.new.presentation
   ```
 
-### Modules
+### Módulos:
   Módulos são um coleção de módulos, constantes, classes e variáveis de classe.
   Um módulo não é instânciavel e não possui herança.
   Módulos usam `namespaces` e `mixins`, classes podem usar `namespaces` assim como os módulos, mas classes não usam `mixins`.
@@ -1479,7 +1618,7 @@ puts SpongeBob.is_squarepants?(SpongeBob.new)
   puts Ocean.whoiam?
   ```
 
-### Loading and Requiring Modules
+### Carregamento e Requerimento:
   * $LOAD_PATH ou $: 
     * Variável global que contém um array com referência dos arquivos.
 
