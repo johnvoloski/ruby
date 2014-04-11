@@ -165,7 +165,7 @@ puts 9999999999999999999.class
 #### Rational:
   São números racionais, sua instância é um Rational.
 ```ruby
-  puts Rational(8/4).class
+puts Rational(8/4).class
 ```
 
 ### Strings:
