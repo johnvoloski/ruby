@@ -837,6 +837,7 @@ begin
   puts a
   a += 1
 end while a < b
+# 0, 1, 2, 3, 4
 ```
 
 #### Until afirmação:
@@ -848,6 +849,7 @@ until a > b do
   puts a
   a += 1
 end
+# 0, 1, 2, 3, 4, 5
 ```
 
 #### Until modificador:
@@ -859,6 +861,7 @@ begin
   puts a
   a += 1
 end until a > b
+# 0, 1, 2, 3, 4, 5
 ```
 
 #### For:
@@ -866,6 +869,7 @@ end until a > b
 for a in 0..5
   puts a
 end
+# 0, 1, 2, 3, 4, 5
 ```
 
 ### Iterators and Enumerable Objects
@@ -879,22 +883,25 @@ end
   Eles podem ser executados atráves do `&` chamando na implementação `block.call`, ou também através do `yield`, 
   o `yield` tem como função executar um bloco anônimo sem precisar ser especificado no método.
   
-  ```ruby
-  class SpongeBob
-    def is_squarepants?(&block)
-      block.call
-    end
-
-    def i_live_in_ocean?
-      yield
-    end
+```ruby
+class SpongeBob
+  def is_squarepants?(&block)
+    block.call
   end
 
-  SpongeBob.new.is_squarepants?  { puts true }
-  SpongeBob.new.i_live_in_ocean? do 
-    puts true
+  def i_live_in_ocean?
+    yield
   end
-  ```
+end
+
+SpongeBob.new.is_squarepants?  { puts true }
+# true
+
+SpongeBob.new.i_live_in_ocean? do 
+  puts true
+end
+# true
+```
 
 ### Alteradores de Controle de Fluxo:
 
@@ -904,6 +911,7 @@ for a in 0..5
   return a if a > 2
   puts a
 end
+# 0, 1, 2
 ```
 
 #### Break:
@@ -912,6 +920,7 @@ for a in 0..5
   break if a > 2
   puts a
 end
+# 0, 1, 2
 ```
 
 #### Next:
@@ -920,6 +929,7 @@ for a in 0..5
   next if a < 2
   puts a
 end
+# 2, 3, 4, 5
 ```
 
 #### Redo:
@@ -928,6 +938,8 @@ for a in 0..5
   puts a
   redo if a < 2
 end
+
+# Loop infinito
 ```
 
 #### Retry:
@@ -941,6 +953,8 @@ rescue
   puts a
   retry
 end
+
+# Retry infinito
 ```
 
 ### Exceções e Tratamentos:
@@ -1002,6 +1016,7 @@ rescue => ex
   # Aqui o tratamento da minha exception.
   puts "#{ex.class}: #{ex.message}"
 end
+# MyError: Mensagem
 ```
 
   Tratando exception com `rescue` pelo tipo:
@@ -1018,6 +1033,7 @@ rescue ArgumentError => ex
   # Aqui o tratamento de erro nos argumentos.
   puts "ArgumentError: #{ex.class}: #{ex.message}"
 end
+# ArgumentError: MyError: Mensagem
 ```
 
   Quando ocorre um exceção durante um tratamento, então é propagada uma nova exceção.
@@ -1033,6 +1049,10 @@ rescue NoMethodError => ex
   puts ex.message
   retry if tries < 4
 end
+# Mensagem
+# Mensagem
+# Mensagem
+# Mensagem
 ```
 
   A cláusula `else` geralmente é utilizada para um tratamento genérico onde outros tratamentos utilizando o `rescue` não forma efetivos:
@@ -1044,27 +1064,32 @@ rescue NoMethodError => ex
 else
   puts "GenericError"
 end
+# GenericError
 ```
 
   A Cláusula `ensure` é utilizada como finalização do tratamento, ela é chama sempre após executar um `rescue` e até mesmo o `else`:
 ```ruby
-  begin
-    raise NoMethodError
-  rescue NoMethodError => ex
-    puts "NoMethodError: #{ex.message}"
-  ensure
-    puts "E finalizou a exceção."
-  end
+begin
+  raise NoMethodError
+rescue NoMethodError => ex
+  puts "NoMethodError: #{ex.message}"
+ensure
+  puts "E finalizou a exceção."
+end
+# NoMethodError: Mensagem
+# E finalizou a exceção.
 
-  begin
-    raise StandardError
-  rescue NoMethodError => ex
-    puts "NoMethodError: #{ex.message}"
-  else
-    puts "GenericError"
-  ensure
-    puts "E finalizou a exceção."
-  end
+begin
+  raise StandardError
+rescue NoMethodError => ex
+  puts "NoMethodError: #{ex.message}"
+else
+  puts "GenericError"
+ensure
+  puts "E finalizou a exceção."
+end
+# GenericError
+# E finalizou a exceção.
 ```
 
   Utilizando o `rescue` em um método, classe ou módulo.
@@ -1087,12 +1112,17 @@ ensure
 end
 
 is_squarepants?(Squidward)
+# O nome da classe é: Squidward
+# Ele também é um personagem.
 ```
 
   Utilizando o `rescue` como modificador:
 ```ruby
 puts is_squarepants?(Patrick)
+# NoMethodError
+
 puts is_squarepants?(SpongeBob) rescue true
+# true
 ```
 
 ## Métodos, Procs e Lambdas:
@@ -1116,6 +1146,7 @@ def is_squarepants?(name)
 end
   
 is_squarepants?(SpongeBob.new)
+# true
 ```
 
   Definindo um método Singleton:
@@ -1127,6 +1158,7 @@ def bob.is_squarepants?
 end
 
 bob.is_squarepants?
+# true
 ```
 
   Indefinindo um método:
@@ -1136,10 +1168,12 @@ def is_squarepants?
 end
 
 is_squarepants?
+# true
 
 undef is_squarepants?
 
 is_squarepants?
+# NoMethodError
 ```
 
 ### Nomes de Métodos:
@@ -1161,19 +1195,23 @@ end
 
 bob = SpongeBob.new
 puts bob.is_squarepants?
+# false
+
 bob.is_squarepants!
 puts bob.is_squarepants?
+# true
 ```
 
   Redefinindo os Métodos Operadores:
 ```ruby
 class SpongeBob
   def +(value)
-    "SpongeBob is #{value}"
+    "SpongeBob #{value}"
   end
 end
 
 puts SpongeBob.new + "SquarePants"
+# SpongeBob SquarePants
 ```
 
   Definindo "alias" para os Métodos: (Não é possível fazer "Overloading" em um "alias")
@@ -1185,7 +1223,10 @@ end
 alias is_sp? is_squarepants?
 
 puts is_squarepants?
+# true
+
 puts is_sp?
+# true
 ```
 
 ### Argumentos em Métodos:
@@ -1197,18 +1238,25 @@ def is_squarepants?(name, *args)
 end
 
 is_squarepants?('SpongeBob', true, 'Patrick')
+# Name: SpongeBob
+# Qualquer outro parâmetro informado: [true, "Patrick"]
 ```
 
   Hash como parâmetro:
-  ```ruby
-  def is_squarepants?(name = 'SpongeBob', options = { squarepants: true })
-    puts name
-    puts options[:squarepants]
-  end
+```ruby
+def is_squarepants?(name = 'SpongeBob', options = { squarepants: true })
+  puts name
+  puts options[:squarepants]
+end
 
-  puts is_squarepants?
-  puts is_squarepants?('Patrick', squarepants: false)
-  ```
+puts is_squarepants?
+# SpongeBob
+# true
+
+puts is_squarepants?('Patrick', squarepants: false)
+# Patrick
+# false
+```
 
   Bloco como parâmetro:
   
@@ -1219,8 +1267,11 @@ def is_squarepants?(name, &block)
   block.call(name)
 end
 
-puts is_squarepants?('SpongeBob') { |name| puts "#{name} is squarepants" }
-puts is_squarepants?('Patrick')   { |name| puts "#{name} isn't squarepants" }
+puts is_squarepants?('SpongeBob') { |name| puts "#{name} SquarePants" }
+# SpongeBob SquarePants
+
+puts is_squarepants?('Patrick')   { |name| puts "#{name} isn't SquarePants" }
+# Patrick isn't SquarePants
 ```
   
   Se você prefere um controle mais específico ainda, defina um parâmetro como sendo o do bloco, o tipo deste parâmetro será um `Proc` e será invocado através do método `call`.
@@ -1229,8 +1280,11 @@ def is_squarepants?(name, block)
   block.call(name)
 end
 
-puts is_squarepants?('SpongeBob',  proc { |name| puts "#{name} is squarepants" })
-puts is_squarepants?('Patrick', proc { |name| puts "#{name} isn't squarepants" })
+puts is_squarepants?('SpongeBob',  proc { |name| puts "#{name} SquarePants" })
+# SpongeBob SquarePants
+
+puts is_squarepants?('Patrick', proc { |name| puts "#{name} isn't SquarePants" })
+# Patrick isn't SquarePants
 ```
 
 ### Procs e Lambdas:
@@ -1241,29 +1295,35 @@ puts is_squarepants?('Patrick', proc { |name| puts "#{name} isn't squarepants" }
 
   Criando Procs:
 ```ruby
-p = Proc.new { |adjective| "SpongeBob is #{adjective}" }
+p = Proc.new { |adjective| "SpongeBob #{adjective}" }
 p.call('SquarePants')
+# SpongeBob SquarePants
 
-p = proc { |adjective| "SpongeBob is #{adjective}" }
+p = proc { |adjective| "SpongeBob #{adjective}" }
 p.call('SquarePants')
+# SpongeBob SquarePants
 ```
 
   Criando Lambdas:
 ```ruby
-l = lambda { |adjective| "SpongeBob is #{adjective}" }
+l = lambda { |adjective| "SpongeBob #{adjective}" }
 l.call('SquarePants')
+# SpongeBob SquarePants
 
-l = ->(adjective) { "SpongeBob is #{adjective}" }
-l.call('SquarePants'
+l = ->(adjective) { "SpongeBob #{adjective}" }
+l.call('SquarePants')
+# SpongeBob SquarePants
 ```
 
   Descubrindo a quantidade de parâmetros obrigatórios de uma `Proc`:
 ```ruby
 p = proc { |adjective| "SpongeBob is #{adjective}" }
 puts p.arity
+# 1
 
 l = ->(adjective) { "SpongeBob is #{adjective}" }
 l.arity
+# 1
 ```
 
   Como diferenciar um `lambda` de um `proc`:
@@ -1277,12 +1337,14 @@ def is_squarepants?
   p.call
   puts ' and Patrick also'
 end
+# SpongeBob is SquarePants
 
 def is_squarepants?
   p = ->{ puts 'SpongeBob is SquarePants'; return }
   p.call
   puts " and Patrick isn't"
 end
+# SpongeBob is SquarePants and Patrick isn't 
 ```
 
 ## Classes e Módulos:
@@ -1301,7 +1363,9 @@ class SpongeBob; end
 sb = SpongeBob.new
 
 puts sb.class
+# SpongeBob
 puts sb.is_a?(SpongeBob)
+# true
 ```
 
 #### Definindo o método inicializador de uma classe:
@@ -1329,8 +1393,9 @@ class SpongeBob
 end
 
 sb = SpongeBob.new(true)
-sb.squarepants = false
+sb.squarepants = true
 puts sb.squarepants
+# true
 ```
 
 Para prover esses acessos de formá automática o `ruby` fornece os métodos para serem definidos:
@@ -1346,8 +1411,10 @@ end
 
 sb = SpongeBob.new
 puts sb.squarepants
+# false
 
 sb.squarepants = true
+# Erro
 ```
   
   * attr_writer   - Cria o acesso de escrita
@@ -1364,6 +1431,7 @@ sb = SpongeBob.new
 sb.squarepants = true
 
 puts sb.squarepants
+# Erro
 ```
 
   * attr_accessor - Cria o acesso de leitura e escrita
@@ -1379,6 +1447,7 @@ end
 sb = SpongeBob.new
 sb.squarepants = true
 puts sb.squarepants
+# true
 ```
 
 ### Definindo Operadores:
@@ -1414,7 +1483,10 @@ end
 
 sb = SpongeBob.new
 puts sb + 'SquarePants'
+# SpongeBob SquarePants
+
 puts !sb
+# SpongeBob isn't SquarePants
 ```
 
 ### Método de classe:
@@ -1438,6 +1510,7 @@ class SpongeBob
 end
 
 puts SpongeBob.is_squarepants?(SpongeBob.new)
+# true
 ```
 
 ### Método de instância:
@@ -1451,6 +1524,7 @@ class SpongeBob
 end
 
 puts SpongeBob.is_squarepants?(SpongeBob.new)
+# true
 ```
 
 ### Visibilidade de Métodos: Public, Protected, Private
@@ -1470,6 +1544,7 @@ end
 
 sb = SpongeBob.new
 sb.is_squarepants?
+# true
 ```
 
   * Métodos de classe podem ser definidos privados com este comando:
@@ -1499,6 +1574,9 @@ class SpongeBob < KrustyKrab
 end
 
 SpongeBob.new.job
+# true
+# Não pode chamar o método privado por uma referência.
+# Não pode chamar o método privado externamente.
 ```
   
   * Os métodos protegidos, são métodos iguais ao privados, só difere na medida em que pode ser explicitamente chamado em qualquer instância da classe.
@@ -1527,6 +1605,10 @@ class SpongeBob < KrustyKrab
 end
 
 SpongeBob.new.job
+# true
+# Pode chamar o método protegido por uma referência
+# true
+# Pode chamar o método protegido externamente.
 ```
 
 ### Heranças:
@@ -1546,6 +1628,7 @@ end
 class SpongeBob < Ocean; end
 
 puts SpongeBob.new.has_squarepants_here?
+# true
 ```
 
   * Sobrescrevendo métodos:
@@ -1563,6 +1646,7 @@ class SpongeBob > Ocean
 end
 
 puts SpongeBob.new.has_squarepants_here?
+# true
 ```
 
   * Sobrescrevendo métodos privados e protegidos:
@@ -1592,7 +1676,10 @@ class SpongeBob > Ocean
 end
 
 puts SpongeBob.new.has_squarepants_here?
+# true
+
 puts SpongeBob.new.whoiam?
+# SpongeBob
 ```
 
   * Algumas vezes necessitamos sobrescrever um método mas continuar com a implementação antiga, então usamos o `super`: (chaining)
@@ -1614,6 +1701,7 @@ class SpongeBob < Ocean
 end
 
 puts SpongeBob.new.presentation
+# I am SpongeBob, and I live in the ocean.
 ```
 
 ### Módulos:
@@ -1644,10 +1732,16 @@ module Ocean
 end
 
 puts Ocean::SpongeBob.new.whoiam?
+# SpongeBob
+
 puts Ocean.spongebob_live_here?
+# true
 
 puts Ocean::Patrick.new.whoiam?
+# Patrick
+
 puts Ocean.patrick_live_here?
+# true
 ```
 
   A diferença de mixins e herança é apenas que quando uma classe inclui um módulo ela não se torna filha deste módulo, 
@@ -1676,9 +1770,13 @@ end
 
 sb = SpongeBob.new
 puts sb.whoiam?
+# SpongeBob
+
 puts sb.i_live_in_ocean?
+# true
 
 puts Ocean.whoiam?
+# Ocean
 ```
 
   O `extend` implementa os métodos do módulo como um método de classe na classe.
@@ -1703,9 +1801,13 @@ end
 
 sb = SpongeBob.new
 puts sb.whoiam?
+# SpongeBob
+
 puts SpongeBob.i_live_in_ocean?
+# true
 
 puts Ocean.whoiam?
+# Ocean
 ```
 
 ### Carregamento e Requerimento:
@@ -1749,7 +1851,10 @@ class SpongeBob
 end
 
 puts SpongeBob.whoiam?
+# SpongeBob
+
 puts SpongeBob.singleton_methods
+# [:whoiam?]
 ```
 Toda vez que injeta métodos em um objeto, eles são adicionados como métodos singleton. O que é realmente importante saber é que estes métodos pertecem unicamente ao objeto em que foram definidos, não afetando nenhum outro objeto da hieraquia.
 
