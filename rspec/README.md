@@ -1,7 +1,7 @@
 # **RSpec**
 
 # Melhores Práticas
--------------------
+===================
 
 * Procurar manter a biblioteca/sintaxe sempre atualizadas, evitando quebra de compatibilidade, falhas de segurança, etc.
 > * [Transpec](https://github.com/yujinakayama/transpec/blob/master/README.md)
@@ -29,22 +29,19 @@ Não use                                             | Use
 `before(:each) do`                                  | `before do`
 
 * Adicionar `#` antes do nome do método quando for descrever um método de instância.
-```
-#!ruby
+```ruby
 describe '#meu_metodo' do
 end
 ```
 
 * Adicionar `.` antes do nome do método quando for descrever um método de classe.
-```
-#!ruby
+```ruby
 describe '.meu_metodo' do
 end
 ```
 
 * Não escrever `should` na especificação do teste.
-```
-#!ruby
+```ruby
 it 'should return something' do
 end
 
@@ -54,8 +51,7 @@ end
 
 * Utilize contextos, seu teste fica mais claro e organizado.
 ### RUIM
-```
-#!ruby
+```ruby
 it 'has 200 status code if logged in' do
   expect(response).to respond_with(200)
 end
@@ -66,8 +62,7 @@ end
 ```
 
 ### BOM
-```
-#!ruby
+```ruby
 context 'when logged in' do
   it { expect(response).to respond_with(200) }
 end
@@ -79,45 +74,41 @@ end
 
 * Use `let` ao invés de variáveis.
 ### RUIM
-```
-#!ruby
+```ruby
 before do
   @something = create_something
 end
 ```
 
 ### BOM
-```
-#!ruby
-  let(:something) { create_something }
+```ruby
+let(:something) { create_something }
 ```
 
 * Use `{}` em um `before`, `after` ou `it`, quando a implementação tiver uma única linha de código, com mais linhas use `do end`:
 ### RUIM
-```
-#!ruby
-  before { do_one; do_two }
-  after  { do_one; do_two }
-  it     { expect(do_one).to eq(one); expect(do_two).to eq(two) }
+```ruby
+before { do_one; do_two }
+after  { do_one; do_two }
+it     { expect(do_one).to eq(one); expect(do_two).to eq(two) }
 ```
 
 ### BOM
-```
-#!ruby
-  before do
-    do_one
-    do_two
-  end
+```ruby
+before do
+  do_one
+  do_two
+end
 
-  after do
-    do_one
-    do_two
-  end
+after do
+  do_one
+  do_two
+end
 
-  it do
-    expect(do_one).to eq(one)
-    expect(do_two).to eq(two)
-  end
+it do
+  expect(do_one).to eq(one)
+  expect(do_two).to eq(two)
+end
 ```
 
 * Use os comparadores pré-definidos:
@@ -168,8 +159,7 @@ end
 > * `expect(Something).to be_valid                # if Something.valid?`
 > * `expect(Something).to have_license(:expected) # if Something.has_license?(:expected)`
 
-```
-#!ruby
+```ruby
 class Something
   def valid?
     ...
@@ -199,8 +189,7 @@ end
 > * [Documentação Oficial](https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers/exist-matcher)
 > * `expect(Something).to exist  # if Something.exist?`
 
-```
-#!ruby
+```ruby
 class Something
   def exist?
     ...
@@ -213,8 +202,7 @@ end
 > * `expect(Something.increment).to change{ Something.count }.from(0).to(1)`
 > * `expect(Something.increment).to change{ Something.count }.by(1)`
 
-```
-#!ruby
+```ruby
 class Something
   class << self
     def increment
@@ -233,8 +221,7 @@ end
 > * [Documentação Oficial](https://www.relishapp.com/rspec/rspec-expectations/docs/built-in-matchers/respond-to-matcher)
 > * `expect(Something).to respond_to(:expected, :expected_two)`
 
-```
-#!ruby
+```ruby
 class Something
   class << self
     def expected
