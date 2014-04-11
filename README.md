@@ -35,6 +35,13 @@ RUBY
 ### Console:
   * irb
 
+### Editores:
+  * [Vim](https://github.com/johnvoloski/dotvim) - Usem este :D
+  * [TextMate](http://macromates.com/)
+  * [Emacs](http://www.gnu.org/software/emacs/)
+  * [RubyMine](http://www.jetbrains.com/ruby/)
+  * [SublimeText](http://www.sublimetext.com/)
+
 ### Links:
   * [Ruby Lang](https://www.ruby-lang.org) - Site Oficial do Ruby
   * [TryRuby](http://tryruby.org) - Console Online de Ruby
