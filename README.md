@@ -127,61 +127,62 @@ end
 
 ## Tipos de Dados:
 
-### True, False and Nil
+### True, False e Nil:
   True representa o verdadeiro, False o falso e nil representa a abstenção de valor. Qualquer valor sem ser False e Nil é True.
 ```ruby
-  puts true.class
-  puts false.class
-  puts nil.class
+puts true.class
+puts false.class
+puts nil.class
 ```
 
-### Numbers
+### Numbers:
 
-#### Integer
+#### Integer:
   Pode ser utilizado o _ para melhor visualização.
 ```ruby
 puts 1_000_000_00
 puts 1_000_000_00.class
 ```
 
-##### Fixnum
+##### Fixnum:
   São inteiros que se encaixam dentro de 31 bits então sua instância é um Fixnum.
 ```ruby
 puts 999999999999999999.class
 ```
 
-##### Bignum
+##### Bignum:
   São inteiros que se encaixam acima de 31 bits então sua instância é um Bignum.
 ```ruby
 puts 9999999999999999999.class
 ```
 
-#### Float
+#### Float:
   São números que utilizam pontos flutuantes, sua instância é um Float.
 ```ruby
 99.99.class
 ```
 
-#### Rational
+#### Rational:
   São números racionais, sua instância é um Rational.
 ```ruby
   puts Rational(8/4).class
 ```
 
-### Strings
-#### Aspas Simples
+### Strings:
+
+#### Aspas Simples:
 ```ruby
-  puts 'Sou uma string com aspas simples e com instância String'.class
-  puts 'Sou uma string com aspas simples'
-  puts 'Sou uma string \' com um "escape"'
-  puts 'Sou uma string quebrada em uma linha \
-        aqui esta minha continuação'
-  puts 'Sou uma string quebrada' \
-       'em multiplas linhas' \
-       'não somente em uma'
+puts 'Sou uma string com aspas simples e com instância String'.class
+puts 'Sou uma string com aspas simples'
+puts 'Sou uma string \' com um "escape"'
+puts 'Sou uma string quebrada em uma linha \
+      aqui esta minha continuação'
+puts 'Sou uma string quebrada' \
+     'em multiplas linhas' \
+     'não somente em uma'
 ```
 
-#### Aspas Duplas
+#### Aspas Duplas:
 ```ruby
 puts "Sou uma string com aspas duplas e com instância String".class
 puts "Sou uma string com aspas duplas"
@@ -193,7 +194,7 @@ adjective = 'SquarePants'
 puts "SpongeBob #{adjective}"
 ```
 
-### Symbols
+### Symbols:
 Um símbolo é um identificador único no ruby. O símbolo referencia ele mesmo.
 Um símbolo tem uma comparação muito mais rápida que uma string.
 Símbolos são ideais para definerem uma chave dentro de um hash, pois é um valor que não será alterado.
@@ -204,7 +205,7 @@ friends = [:SpongeBob, :Patrick]
 puts friends
 ```
 
-### Arrays
+### Arrays:
 Um `array` é uma sequência de valores acessíveis pela sua posição ou indíce.
 Em `ruby` o valor do primeiro indíce é 0.
 ```ruby
@@ -212,7 +213,7 @@ puts [1, 2, 3, 4]
 puts Array.new(4) { |i| i + 1 }
 ```
 
-### Hashes
+### Hashes:
 Um `hash` em `ruby` é composto por objetos formados por `chave` => `valor`.
 
 ```ruby
@@ -226,7 +227,7 @@ sb = { SpongeBob: 'SquarePants' }
 puts sb[:SpongeBob]
 ```
 
-### Ranges
+### Ranges:
 O `range` representa o intervalo entre um início e um final.
 ```ruby
 # Irá gerar um intervalo de 1 à 10 incluindo o 10.
@@ -239,7 +240,7 @@ puts 1...10
 puts a..z
 ```
 
-### Regular Expressions
+### Regular Expressions:
 ```ruby
 ```
 
@@ -342,7 +343,7 @@ end
 HelloWorld.new('SpongeBob SquarePants')
 ```
 
-### Constants
+### Constants:
   * Constantes começam com uma letra maiúscula. 
   * Constantes podem ser visualizadas internamente de uma classe ou módulo, apenas pelo seu nome, ou externamente através do seu módulo/classe mais o seu nome.
 ```ruby
@@ -360,7 +361,7 @@ puts HelloWorld::HELLO_WORLD
 
 ### Operadores:
 
-#### Aritimético
+#### Aritimético:
 * `+`
 ```ruby
 # Soma o valor da variável a com o valor da variável b e returna o resultado.
@@ -421,7 +422,7 @@ b = 20
 puts a**b
 ```
 
-#### Comparação
+#### Comparação:
 * `==`
 ```ruby
 # Verifica se o valor da variável a é igual ao valor da variável b, se sim retorna true.
@@ -520,7 +521,7 @@ b = 20
 puts a.equal?(b)
 ```
 
-#### Atribuição
+#### Atribuição:
 * `=`
 ```ruby
 # Atruibui o valor da variável a para a váriavel b.
@@ -597,14 +598,14 @@ b **= a
 puts b
 ```
 
-#### Atribuição Múltipla
+#### Atribuição Múltipla:
 ```ruby
 # Atribui paralelizadamente valores à variáveis seguindo sua ordem de definição.
 
 a, b, c = 10, 20, 30
 ```
 
-#### Lógico
+#### Lógico:
 * `and` ou `&&`
 ```ruby
 # Se o valor da variável a e o valor da variável b forem verdadeiros, a condição é verdadeira.
@@ -638,7 +639,7 @@ puts 'True' if !(a && b)
 puts 'True' if not(a && b)
 ```
 
-#### Ternário
+#### Ternário:
 * `?:`
 ```ruby
 # Cria uma expressão condicional.
@@ -648,7 +649,7 @@ condition = false
 puts conditidion ? true : false
 ```
 
-#### Intervalo
+#### Intervalo:
 * `..`
 ```ruby
 # Cria um intervalo entre o ponto de partida e o ponto de chegada incluido ele.
@@ -663,11 +664,11 @@ puts (1..10).to_a
 puts (1...10).to_a
 ```
 
-## Controle de Estruturas
+## Controle de Estruturas e Afirmação:
 
 ### Condicionais:
 
-#### if, else statement:
+#### if, else afirmação:
 ```ruby
 conditional = 1
 
@@ -680,14 +681,14 @@ else
 end
 ```
 
-#### if modifier:
+#### if modificador:
 ```ruby
 conditional = true
 
 puts 'Is true.' if conditional
 ```
 
-#### unless statement:
+#### unless afirmação:
 ```ruby
 conditional = 1
 
@@ -698,14 +699,14 @@ else
 end
 ```
 
-#### unless modifier:
+#### unless modificador:
 ```ruby
 conditional = false
 
 puts 'Is false.' unless conditional
 ```
 
-#### case statement:
+#### case afirmação:
 ```ruby
 conditional = 10
 
@@ -725,7 +726,7 @@ end
 
 ### Laços
 
-#### While statement:
+#### While afirmação:
 ```ruby
 a = 0
 b = 5
@@ -736,7 +737,7 @@ while a < b do
 end
 ```
 
-#### While modifier:
+#### While modificador:
 ```ruby
 a = 0
 b = 5
@@ -747,7 +748,7 @@ begin
 end while a < b
 ```
 
-#### Until Statement
+#### Until afirmação:
 ```ruby
 a = 0
 b = 5
@@ -758,7 +759,7 @@ until a > b do
 end
 ```
 
-#### Until modifier:
+#### Until modificador:
 ```ruby
 a = 0
 b = 5
@@ -778,7 +779,7 @@ end
 
 ### Iterators and Enumerable Objects
 
-### Blocos
+### Blocos:
   Os `blocks` assim como é definido são blocos de códigos formados por delimitadores `{ ... }` ou `do ... end`,
   a convensão que usamos é `{ ... }` para uma linha e `do ... end` para mais de uma linha.
   O bloco serve para armazenar uma implementação que for desejada, e será executada em um certo momento, com
@@ -804,7 +805,7 @@ end
   end
   ```
 
-### Alteradores de Controle de Fluxo
+### Alteradores de Controle de Fluxo:
 
 #### Return
 ```ruby
@@ -840,8 +841,6 @@ end
 
 #### Retry:
 ```ruby
-# Ruby 1.8 funcionava também como o redo
-
 a = 0
 
 begin
@@ -889,225 +888,225 @@ end
         * ZeroDivisionError
 
   Definindo uma exception class:
-  ```ruby
-  class MyError < StandardError; end
-  ```
+```ruby
+class MyError < StandardError; end
+```
   
   Levantando uma exception:
-  ```ruby
-    class MyError < StandardError; end
-
-    raise MyError
-    raise MyError, 'Exception'
-  ```
-
-  Tratando exception com `rescue`:
-  ```ruby
+```ruby
   class MyError < StandardError; end
 
-  begin
-    # Minha implementação aqui.
-    raise MyError if true
-  rescue => ex
-    # Aqui o tratamento da minha exception.
-    puts "#{ex.class}: #{ex.message}"
-  end
-  ```
+  raise MyError
+  raise MyError, 'Exception'
+```
+
+  Tratando exception com `rescue`:
+```ruby
+class MyError < StandardError; end
+
+begin
+  # Minha implementação aqui.
+  raise MyError if true
+rescue => ex
+  # Aqui o tratamento da minha exception.
+  puts "#{ex.class}: #{ex.message}"
+end
+```
 
   Tratando exception com `rescue` pelo tipo:
-  ```ruby
-  class MyError < ArgumentError; end
+```ruby
+class MyError < ArgumentError; end
 
-  begin
-    # Minha implementação aqui.
-    raise MyError if true
-  rescue NoMethodError => ex
-    # Aqui o tratamento de método não definido.
-    puts "NoMethodError: #{ex.class}: #{ex.message}"
-  rescue ArgumentError => ex
-    # Aqui o tratamento de erro nos argumentos.
-    puts "ArgumentError: #{ex.class}: #{ex.message}"
-  end
-  ```
+begin
+  # Minha implementação aqui.
+  raise MyError if true
+rescue NoMethodError => ex
+  # Aqui o tratamento de método não definido.
+  puts "NoMethodError: #{ex.class}: #{ex.message}"
+rescue ArgumentError => ex
+  # Aqui o tratamento de erro nos argumentos.
+  puts "ArgumentError: #{ex.class}: #{ex.message}"
+end
+```
 
   Quando ocorre um exceção durante um tratamento, então é propagada uma nova exceção.
 
   Usando o `retry` dentro de um tratamento de exceção:
-  ```ruby
-  tries = 0
+```ruby
+tries = 0
 
-  begin
-    tries += 1
-    xMethod
-  rescue NoMethodError => ex
-    puts ex.message
-    retry if tries < 4
-  end
-  ```
+begin
+  tries += 1
+  xMethod
+rescue NoMethodError => ex
+  puts ex.message
+  retry if tries < 4
+end
+```
 
   A cláusula `else` geralmente é utilizada para um tratamento genérico onde outros tratamentos utilizando o `rescue` não forma efetivos:
-  ```ruby
+```ruby
+begin
+  raise StandardError
+rescue NoMethodError => ex
+  puts "NoMethodError: #{ex.message}"
+else
+  puts "GenericError"
+end
+```
+
+  A Cláusula `ensure` é utilizada como finalização do tratamento, ela é chama sempre após executar um `rescue` e até mesmo o `else`:
+```ruby
+  begin
+    raise NoMethodError
+  rescue NoMethodError => ex
+    puts "NoMethodError: #{ex.message}"
+  ensure
+    puts "E finalizou a exceção."
+  end
+
   begin
     raise StandardError
   rescue NoMethodError => ex
     puts "NoMethodError: #{ex.message}"
   else
     puts "GenericError"
+  ensure
+    puts "E finalizou a exceção."
   end
-  ```
-
-  A Cláusula `ensure` é utilizada como finalização do tratamento, ela é chama sempre após executar um `rescue` e até mesmo o `else`:
-  ```ruby
-    begin
-      raise NoMethodError
-    rescue NoMethodError => ex
-      puts "NoMethodError: #{ex.message}"
-    ensure
-      puts "E finalizou a exceção."
-    end
-
-    begin
-      raise StandardError
-    rescue NoMethodError => ex
-      puts "NoMethodError: #{ex.message}"
-    else
-      puts "GenericError"
-    ensure
-      puts "E finalizou a exceção."
-    end
-  ```
+```
 
   Utilizando o `rescue` em um método, classe ou módulo.
-  ```ruby
-  class Patrick; end
-  class SpongeBob; end
-  class Squidward; end
+```ruby
+class Patrick; end
+class SpongeBob; end
+class Squidward; end
 
-  class NotSpongeBobError < StandardError; end
-  class NotPatrickError < StandardError; end
+class NotSpongeBobError < StandardError; end
+class NotPatrickError < StandardError; end
 
-  def is_squarepants?(name)
-    raise NotSpongeBobError if !name.is_a? SpongeBob
-  rescue
-    raise NotPatrickError if !name.is_a? Patrick
-  else
-    puts "O nome da classe é: {Squidward.name}."
-  ensure
-    puts "Ele também é um personagem."
-  end
+def is_squarepants?(name)
+  raise NotSpongeBobError if !name.is_a? SpongeBob
+rescue
+  raise NotPatrickError if !name.is_a? Patrick
+else
+  puts "O nome da classe é: {Squidward.name}."
+ensure
+  puts "Ele também é um personagem."
+end
 
-  is_squarepants?(Squidward)
-  ```
+is_squarepants?(Squidward)
+```
 
   Utilizando o `rescue` como modificador:
-  ```ruby
-  puts is_squarepants?(Patrick)
-  puts is_squarepants?(SpongeBob) rescue true
-  ```
+```ruby
+puts is_squarepants?(Patrick)
+puts is_squarepants?(SpongeBob) rescue true
+```
 
-## Métodos, Procs e Lambdas
+## Métodos, Procs e Lambdas:
 
 ### Definindo métodos simples:
   Definindo um método:
-  ```ruby
-  class SpongeBob; end
+```ruby
+class SpongeBob; end
 
-  def is_squarepants?(name)
-    name.is_a?(SpongeBob) ? true : false
-  end
-  ```
+def is_squarepants?(name)
+  name.is_a?(SpongeBob) ? true : false
+end
+```
 
   Invocando um método:
-  ```ruby
-  class SpongeBob; end
+```ruby
+class SpongeBob; end
 
-  def is_squarepants?(name)
-    name.is_a?(SpongeBob) ? true : false
-  end
-    
-  is_squarepants?(SpongeBob.new)
-  ```
+def is_squarepants?(name)
+  name.is_a?(SpongeBob) ? true : false
+end
+  
+is_squarepants?(SpongeBob.new)
+```
 
   Definindo um método Singleton:
-  ```ruby
-  bob = 'SpongeBob'
-  
-  def bob.is_squarepants?
-    true
-  end
+```ruby
+bob = 'SpongeBob'
 
-  bob.is_squarepants?
-  ```
+def bob.is_squarepants?
+  true
+end
+
+bob.is_squarepants?
+```
 
   Indefinindo um método:
-  ```ruby
-  def is_squarepants?
-    true
-  end
+```ruby
+def is_squarepants?
+  true
+end
 
-  is_squarepants?
+is_squarepants?
 
-  undef is_squarepants?
+undef is_squarepants?
 
-  is_squarepants?
-  ```
+is_squarepants?
+```
 
 ### Nomes de Métodos:
   Por convensão nomes de métodos começam sempre com letra minúscula, podem começar com letra maiúscula mas irão se parecer com uma constante.
-  Quando o nome do método é maior que uma palavra, por convensão utiliza-se `_` para separa as palavras: `is_squarepants?`.
+  Quando o nome do método é maior que uma palavra, por convensão utiliza-se "_" para separa as palavras: "is_squarepants?".
   A convensão para métodos com `?` no final, são métodos cujo valor retornado sempre será um boleano.
   A conversão para métodos com `!` no final, são métodos cuja utilização deve ser com cautela, por exemplo, o método `sort` de um `Array`, ele copia
   o `Array` e ordena, já o método `sort!, efetua o `sort!` no mesmo array o redefinindo.
-  ```ruby
-  class SpongeBob
-    def is_squarepants?
-      @squarepants || false
-    end
-
-    def is_squarepants!
-      @squarepants = true
-    end
+```ruby
+class SpongeBob
+  def is_squarepants?
+    @squarepants || false
   end
 
-  bob = SpongeBob.new
-  puts bob.is_squarepants?
-  bob.is_squarepants!
-  puts bob.is_squarepants?
-  ```
+  def is_squarepants!
+    @squarepants = true
+  end
+end
+
+bob = SpongeBob.new
+puts bob.is_squarepants?
+bob.is_squarepants!
+puts bob.is_squarepants?
+```
 
   Redefinindo os Métodos Operadores:
-  ```ruby
-  class SpongeBob
-    def +(value)
-      "SpongeBob is #{value}"
-    end
+```ruby
+class SpongeBob
+  def +(value)
+    "SpongeBob is #{value}"
   end
+end
 
-  puts SpongeBob.new + "SquarePants"
-  ```
+puts SpongeBob.new + "SquarePants"
+```
 
   Definindo "alias" para os Métodos: (Não é possível fazer "Overloading" em um "alias")
-  ```ruby
-  def is_squarepants?
-    true
-  end
+```ruby
+def is_squarepants?
+  true
+end
 
-  alias is_sp? is_squarepants?
+alias is_sp? is_squarepants?
 
-  puts is_squarepants?
-  puts is_sp?
-  ```
+puts is_squarepants?
+puts is_sp?
+```
 
-### Argumentos em Métodos
+### Argumentos em Métodos:
   Lista de Argumentos como Parâmetros:
-  ```ruby
-  def is_squarepants?(name, *args)
-    puts "Name: #{name}"
-    puts "Qualquer outro parâmetro informado: #{args}"
-  end
+```ruby
+def is_squarepants?(name, *args)
+  puts "Name: #{name}"
+  puts "Qualquer outro parâmetro informado: #{args}"
+end
 
-  is_squarepants?('SpongeBob', true, 'Patrick')
-  ```
+is_squarepants?('SpongeBob', true, 'Patrick')
+```
 
   Hash como parâmetro:
   ```ruby
@@ -1124,78 +1123,78 @@ end
   
   Se você prefere um controle explícito sobre o bloco, adicione um parâmetro final com um `&` na frente, então esse parâmetro irá referenciar o bloco, se for passado 
   para o método, o tipo desse bloco sera um `Proc` ao invés de usar o `yield` você invocará através do método `call`.
-  ```ruby
-  def is_squarepants?(name, &block)
-    block.call(name)
-  end
+```ruby
+def is_squarepants?(name, &block)
+  block.call(name)
+end
 
-  puts is_squarepants?('SpongeBob') { |name| puts "#{name} is squarepants" }
-  puts is_squarepants?('Patrick')   { |name| puts "#{name} isn't squarepants" }
-  ```
+puts is_squarepants?('SpongeBob') { |name| puts "#{name} is squarepants" }
+puts is_squarepants?('Patrick')   { |name| puts "#{name} isn't squarepants" }
+```
   
   Se você prefere um controle mais específico ainda, defina um parâmetro como sendo o do bloco, o tipo deste parâmetro será um `Proc` e será invocado através do método `call`.
-  ```ruby
-  def is_squarepants?(name, block)
-    block.call(name)
-  end
-  
-  puts is_squarepants?('SpongeBob',  proc { |name| puts "#{name} is squarepants" })
-  puts is_squarepants?('Patrick', proc { |name| puts "#{name} isn't squarepants" })
-  ```
+```ruby
+def is_squarepants?(name, block)
+  block.call(name)
+end
 
-### Procs e Lambdas
+puts is_squarepants?('SpongeBob',  proc { |name| puts "#{name} is squarepants" })
+puts is_squarepants?('Patrick', proc { |name| puts "#{name} isn't squarepants" })
+```
+
+### Procs e Lambdas:
   Blocos são estruturas sintáticas em Ruby, não são objetos e não tem como os manipular como objetos.
   Então é possível criar um objeto representante de um bloco. Dependendo de como é criado o objeto,
   ele é chamado de `proc` ou `lambda`. `Procs` tem um comportamento como o de um bloco, e `Lambdas` tem
   um comportamento como um método. No entando os dois são instâncias da classe `Proc`.
 
   Criando Procs:
-  ```ruby
-  p = Proc.new { |adjective| "SpongeBob is #{adjective}" }
-  p.call('SquarePants')
-  
-  p = proc { |adjective| "SpongeBob is #{adjective}" }
-  p.call('SquarePants')
-  ```
+```ruby
+p = Proc.new { |adjective| "SpongeBob is #{adjective}" }
+p.call('SquarePants')
+
+p = proc { |adjective| "SpongeBob is #{adjective}" }
+p.call('SquarePants')
+```
 
   Criando Lambdas:
-  ```ruby
-  l = lambda { |adjective| "SpongeBob is #{adjective}" }
-  l.call('SquarePants')
+```ruby
+l = lambda { |adjective| "SpongeBob is #{adjective}" }
+l.call('SquarePants')
 
-  l = ->(adjective) { "SpongeBob is #{adjective}" }
-  l.call('SquarePants'
-  ```
+l = ->(adjective) { "SpongeBob is #{adjective}" }
+l.call('SquarePants'
+```
 
   Descubrindo a quantidade de parâmetros obrigatórios de uma `Proc`:
-  ```ruby
-  p = proc { |adjective| "SpongeBob is #{adjective}" }
-  puts p.arity
+```ruby
+p = proc { |adjective| "SpongeBob is #{adjective}" }
+puts p.arity
 
-  l = ->(adjective) { "SpongeBob is #{adjective}" }
-  l.arity
-  ```
+l = ->(adjective) { "SpongeBob is #{adjective}" }
+l.arity
+```
 
   Como diferenciar um `lambda` de um `proc`:
   O `proc` se parece como um bloco e tem um comportamento de bloco, o `lambda` é levemente modificado para parecer como um método. Para descobrir se o
   objeto é um `lambda` ou `proc` existe o método `lambda?` que retorna `true` se for um `lambda` e `false` se for um `proc`.
   O `proc` funciona como um bloco, seu retorno é propagado no contexto e não para o próprio `proc`.
   O `lambda` funciona como um método, seu retorno é propagado para o próprio `lambda`.
-  ```ruby
-  def is_squarepants?
-    p = proc { puts 'SpongeBob is SquarePants'; return }
-    p.call
-    puts ' and Patrick also'
-  end
+```ruby
+def is_squarepants?
+  p = proc { puts 'SpongeBob is SquarePants'; return }
+  p.call
+  puts ' and Patrick also'
+end
 
-  def is_squarepants?
-    p = ->{ puts 'SpongeBob is SquarePants'; return }
-    p.call
-    puts " and Patrick isn't"
-  end
-  ```
+def is_squarepants?
+  p = ->{ puts 'SpongeBob is SquarePants'; return }
+  p.call
+  puts " and Patrick isn't"
+end
+```
 
-## Classes e Módulos
+## Classes e Módulos:
 
 ### Definindo uma classe simples:
 
@@ -1245,51 +1244,51 @@ puts sb.squarepants
 
 Para prover esses acessos de formá automática o `ruby` fornece os métodos para serem definidos:
   * attr_reader   - Cria o acesso de leitura 
-  ```ruby
-  class SpongeBob
-    attr_reader :squarepants
+```ruby
+class SpongeBob
+  attr_reader :squarepants
 
-    def initialize
-      @squarepants = false
-    end
+  def initialize
+    @squarepants = false
   end
+end
 
-  sb = SpongeBob.new
-  puts sb.squarepants
+sb = SpongeBob.new
+puts sb.squarepants
 
-  sb.squarepants = true
-  ```
+sb.squarepants = true
+```
   
   * attr_writer   - Cria o acesso de escrita
-  ```ruby
-  class SpongeBob
-    attr_writer :squarepants
+```ruby
+class SpongeBob
+  attr_writer :squarepants
 
-    def initialize
-      @squarepants = false
-    end
+  def initialize
+    @squarepants = false
   end
+end
 
-  sb = SpongeBob.new
-  sb.squarepants = true
+sb = SpongeBob.new
+sb.squarepants = true
 
-  puts sb.squarepants
-  ```
+puts sb.squarepants
+```
 
   * attr_accessor - Cria o acesso de leitura e escrita
-  ```ruby
-  class SpongeBob
-    attr_accessor :squarepants
+```ruby
+class SpongeBob
+  attr_accessor :squarepants
 
-    def initialize
-      @squarepants = false
-    end
+  def initialize
+    @squarepants = false
   end
+end
 
-  sb = SpongeBob.new
-  sb.squarepants = true
-  puts sb.squarepants
-  ```
+sb = SpongeBob.new
+sb.squarepants = true
+puts sb.squarepants
+```
 
 ### Definindo Operadores:
 Em `ruby` você pode redefinir os operadores de uma classe:
@@ -1364,259 +1363,259 @@ puts SpongeBob.is_squarepants?(SpongeBob.new)
 ```
 
 ### Visibilidade de Métodos: Public, Protected, Private
-  * Métodos de instância podem ser definidos públicos com este comando:
-  ```ruby
-  public_class_method :squarepants
-  ```
+  * Métodos de classe podem ser definidos públicos com este comando:
+```ruby
+public_class_method :squarepants
+```
   
   * Todos métodos normalmente são públicos, exceto o `initialize` que é sempre privado. Os métodos públicos podem ser 
   invocados por qualquer um, não existe restrições.
-  ```ruby
-  class SpongeBob
-    def is_squarepants?
-      self.is_a? SpongeBob
-    end
+```ruby
+class SpongeBob
+  def is_squarepants?
+    self.is_a? SpongeBob
   end
+end
 
-  sb = SpongeBob.new
-  sb.is_squarepants?
-  ```
+sb = SpongeBob.new
+sb.is_squarepants?
+```
 
-  * Métodos de instância podem ser definidos privados com este comando:
-  ```ruby
-  private_class_method :squarepants
-  ```
+  * Métodos de classe podem ser definidos privados com este comando:
+```ruby
+private_class_method :squarepants
+```
   
   * Os métodos privados, são métodos que só podem ser acessados internamente.
-  ```ruby
-  class KrustyKrab
-    private
-    
-    def is_employee?(instance)
-      instance.is_a?(SpongeBob)
-    end
-
-    # Pode ser definido privado desta maneira também:
-    # private :is_employee?
+```ruby
+class KrustyKrab
+  private
+  
+  def is_employee?(instance)
+    instance.is_a?(SpongeBob)
   end
 
-  class SpongeBob < KrustyKrab
-    def job
-      puts is_employee?(self)
-      puts self.is_employee?(self) rescue puts 'Não pode chamar o método privado por uma referência.'
-      puts SpongeBob.new.is_employee?(SpongeBob.new) rescue puts 'Não pode chamar o método privado externamente.'
-    end
-  end
+  # Pode ser definido privado desta maneira também:
+  # private :is_employee?
+end
 
-  SpongeBob.new.job
-  ```
+class SpongeBob < KrustyKrab
+  def job
+    puts is_employee?(self)
+    puts self.is_employee?(self) rescue puts 'Não pode chamar o método privado por uma referência.'
+    puts SpongeBob.new.is_employee?(SpongeBob.new) rescue puts 'Não pode chamar o método privado externamente.'
+  end
+end
+
+SpongeBob.new.job
+```
   
   * Os métodos protegidos, são métodos iguais ao privados, só difere na medida em que pode ser explicitamente chamado em qualquer instância da classe.
-  ```ruby
-  class KrustyKrab
-    protected
-    
-    def is_employee?(instance)
-      instance.is_a?(SpongeBob)
-    end
-
-    # Pode ser definido protegido desta maneira também:
-    # protected :is_employee?
+```ruby
+class KrustyKrab
+  protected
+  
+  def is_employee?(instance)
+    instance.is_a?(SpongeBob)
   end
 
-  class SpongeBob < KrustyKrab
-    def job
-      puts is_employee?(self)
+  # Pode ser definido protegido desta maneira também:
+  # protected :is_employee?
+end
 
-      puts self.is_employee?(self)
-      puts 'Pode chamar o método protegido por uma referência.'
+class SpongeBob < KrustyKrab
+  def job
+    puts is_employee?(self)
 
-      puts SpongeBob.new.is_employee?(SpongeBob.new)
-      puts 'Pode chamar o método protegido externamente.'
-    end
+    puts self.is_employee?(self)
+    puts 'Pode chamar o método protegido por uma referência.'
+
+    puts SpongeBob.new.is_employee?(SpongeBob.new)
+    puts 'Pode chamar o método protegido externamente.'
   end
+end
 
-  SpongeBob.new.job
-  ```
+SpongeBob.new.job
+```
 
-### Heranças
+### Heranças:
   Herança não é muito diferente em `ruby`, quando você tem um classe `SpongeBob` que herda de `Ocean` dizemos que `SpongeBob` é uma `subclass` e `Ocean` é uma `superclass`.
   Uma classe pode ter infinitas `subclasses` mas apenas uma `superclass`. `ruby` não possui herança múltipla.
   Variáveis de instância, classe e constantes são herdadas e podem ser modificadas. O detalhes se for uma constante é que se estivermos
   criando alguma instância na `superclass` dela, a instância da `subclass` será diferente, pois sera criada uma nova.
 
   * Herança de métodos:
-  ```ruby
-  class Ocean
-    def has_squarepants_here?
-      true
-    end
+```ruby
+class Ocean
+  def has_squarepants_here?
+    true
   end
+end
 
-  class SpongeBob < Ocean; end
+class SpongeBob < Ocean; end
 
-  puts SpongeBob.new.has_squarepants_here?
-  ```
+puts SpongeBob.new.has_squarepants_here?
+```
 
   * Sobrescrevendo métodos:
-  ```ruby
-  class Ocean
-    def has_squarepants_here?
-      false
-    end
+```ruby
+class Ocean
+  def has_squarepants_here?
+    false
   end
+end
 
-  class SpongeBob > Ocean
-    def has_squarepants_here?
-      true
-    end
+class SpongeBob > Ocean
+  def has_squarepants_here?
+    true
   end
+end
 
-  puts SpongeBob.new.has_squarepants_here?
-  ```
+puts SpongeBob.new.has_squarepants_here?
+```
 
   * Sobrescrevendo métodos privados e protegidos:
-  ```ruby
-  class Ocean
-    private
+```ruby
+class Ocean
+  private
 
-    def has_squarepants_here?
-      false
-    end
-
-    protected
-
-    def whoiam?
-      'Ocean'
-    end
+  def has_squarepants_here?
+    false
   end
 
-  class SpongeBob > Ocean
-    def has_squarepants_here?
-      true
-    end
+  protected
 
-    def whoiam?
-      'SpongeBob'
-    end
+  def whoiam?
+    'Ocean'
+  end
+end
+
+class SpongeBob > Ocean
+  def has_squarepants_here?
+    true
   end
 
-  puts SpongeBob.new.has_squarepants_here?
-  puts SpongeBob.new.whoiam?
-  ```
+  def whoiam?
+    'SpongeBob'
+  end
+end
+
+puts SpongeBob.new.has_squarepants_here?
+puts SpongeBob.new.whoiam?
+```
 
   * Algumas vezes necessitamos sobrescrever um método mas continuar com a implementação antiga, então usamos o `super`: (chaining)
-  ```ruby
-  class Ocean
-    def initialize(whoiam = 'Ocean')
-      @whoiam = "I am #{whoiam}"
-    end
+```ruby
+class Ocean
+  def initialize(whoiam = 'Ocean')
+    @whoiam = "I am #{whoiam}"
   end
+end
 
-  class SpongeBob < Ocean
-    attr_accessor :presentation
+class SpongeBob < Ocean
+  attr_accessor :presentation
 
-    def initialize
-      super('SpongeBob')
+  def initialize
+    super('SpongeBob')
 
-      @presentation = "#{@whoiam}, and I live in the ocean."
-    end
+    @presentation = "#{@whoiam}, and I live in the ocean."
   end
+end
 
-  puts SpongeBob.new.presentation
-  ```
+puts SpongeBob.new.presentation
+```
 
 ### Módulos:
   Módulos são um coleção de módulos, constantes, classes e variáveis de classe.
   Um módulo não é instânciavel e não possui herança.
   Módulos usam `namespaces` e `mixins`, classes podem usar `namespaces` assim como os módulos, mas classes não usam `mixins`.
-  ```ruby
-  module Ocean
-    def self.spongebob_live_here?
-      true
-    end
+```ruby
+module Ocean
+  def self.spongebob_live_here?
+    true
+  end
 
-    def self.patrick_live_here?
-      true
-    end
+  def self.patrick_live_here?
+    true
+  end
 
-    class SpongeBob
-      def whoiam?
-        'SpongeBob'
-      end
-    end
-
-    class Patrick
-      def whoiam?
-        'Patrick'
-      end
+  class SpongeBob
+    def whoiam?
+      'SpongeBob'
     end
   end
 
-  puts Ocean::SpongeBob.new.whoiam?
-  puts Ocean.spongebob_live_here?
+  class Patrick
+    def whoiam?
+      'Patrick'
+    end
+  end
+end
 
-  puts Ocean::Patrick.new.whoiam?
-  puts Ocean.patrick_live_here?
-  ```
+puts Ocean::SpongeBob.new.whoiam?
+puts Ocean.spongebob_live_here?
+
+puts Ocean::Patrick.new.whoiam?
+puts Ocean.patrick_live_here?
+```
 
   A diferença de mixins e herança é apenas que quando uma classe inclui um módulo ela não se torna filha deste módulo, 
   apenas implementa os seus métodos.
   Os módulos e os mixins:
   
   O `include` implementa os métodos do módulo como um método de instância na classe.
-  ```ruby
-  module Ocean
-    def self.whoiam?
-      'Ocean'
-    end
-
-    def i_live_in_ocean?
-      true
-    end
+```ruby
+module Ocean
+  def self.whoiam?
+    'Ocean'
   end
 
-  class SpongeBob
-    include Ocean
-
-    def whoiam?
-      'SpongeBob'
-    end
+  def i_live_in_ocean?
+    true
   end
+end
 
-  sb = SpongeBob.new
-  puts sb.whoiam?
-  puts sb.i_live_in_ocean?
+class SpongeBob
+  include Ocean
 
-  puts Ocean.whoiam?
-  ```
+  def whoiam?
+    'SpongeBob'
+  end
+end
+
+sb = SpongeBob.new
+puts sb.whoiam?
+puts sb.i_live_in_ocean?
+
+puts Ocean.whoiam?
+```
 
   O `extend` implementa os métodos do módulo como um método de classe na classe.
-  ```ruby
-  module Ocean
-    def self.whoiam?
-      'Ocean'
-    end
-
-    def i_live_in_ocean?
-      true
-    end
+```ruby
+module Ocean
+  def self.whoiam?
+    'Ocean'
   end
 
-  class SpongeBob
-    extend Ocean
-
-    def whoiam?
-      'SpongeBob'
-    end
+  def i_live_in_ocean?
+    true
   end
+end
 
-  sb = SpongeBob.new
-  puts sb.whoiam?
-  puts SpongeBob.i_live_in_ocean?
+class SpongeBob
+  extend Ocean
 
-  puts Ocean.whoiam?
-  ```
+  def whoiam?
+    'SpongeBob'
+  end
+end
+
+sb = SpongeBob.new
+puts sb.whoiam?
+puts SpongeBob.i_live_in_ocean?
+
+puts Ocean.whoiam?
+```
 
 ### Carregamento e Requerimento:
   * $LOAD_PATH ou $: 
@@ -1624,29 +1623,29 @@ puts SpongeBob.is_squarepants?(SpongeBob.new)
 
   * require 
     * Faz a inclusão e a leitura do arquivo.
-  ```ruby
-  require 'some_file'
-  ```
+```ruby
+require 'some_file'
+```
 
   * require_relative 
     * É utilizando quando existe a necessidade de referênciar um diretório/arquivo. Faz a leitura do arquivo.
-  ```ruby
-  require_relative 'some_path/some_file'
-  ```
+```ruby
+require_relative 'some_path/some_file'
+```
 
   * load
     * Tem um comportamento semelhante ao `require`, a diferença é que necessita da extensão do arquivo, e pode ser executada diversas vezes.
-  ```ruby
-  load 'some_path/some_file.rb'
-  ```
+```ruby
+load 'some_path/some_file.rb'
+```
 
   * autoload
     * Tem um comportamento semelhante ao `require`, porém só faz a leitura do arquivo quando acessado pela primeira vez.
-  ```ruby
-  autoload :SomeClass, 'some_class'
-  ```
+```ruby
+autoload :SomeClass, 'some_class'
+```
 
-### Singleton Methods and the Eigenclass
+### Métodos Singleton em classe:
 Todo objeto do Ruby está associado a duas classes: a classe que a instanciou e uma classe anônima, escondida, específica do objeto. Esta classe anônima é chamada de Singleton Class, mas antes de ter um nome oficial também era chamada de anonymous class, metaclass, eigenclass ou ghost class.
 A sintaxe mais comum para acessar a classe Singleton é:
 ```ruby
@@ -1657,7 +1656,6 @@ class SpongeBob
     end
   end
 end
-
 
 puts SpongeBob.whoiam?
 puts SpongeBob.singleton_methods
