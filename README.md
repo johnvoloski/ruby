@@ -879,8 +879,6 @@ end
 # 0, 1, 2, 3, 4, 5
 ```
 
-### Iterators and Enumerable Objects
-
 ### Blocos:
   Os `blocks` assim como é definido são blocos de códigos formados por delimitadores `{ ... }` ou `do ... end`,
   a convensão que usamos é `{ ... }` para uma linha e `do ... end` para mais de uma linha.
