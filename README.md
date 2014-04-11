@@ -106,9 +106,11 @@ end
   * [Heroku](https://www.heroku.com/)
   * [AppFog](https://www.appfog.com/)
   * [Amazon](https://aws.amazon.com/pt/ec2/?nc1=h_ls)
+  * [Digital Ocean](https://digitalocean.com/)
 
 ## Integração Contínua:
   * [GO](http://www.thoughtworks.com/products/go-continuous-delivery)
+  * [Travis](https://travis-ci.org/)
 
 ## Gerênciadores de Versões Ruby:
   * [pik](https://github.com/vertiginous/pik) - Windows
