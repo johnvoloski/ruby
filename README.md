@@ -1528,7 +1528,7 @@ class SpongeBob
   end
 end
 
-puts SpongeBob.is_squarepants?(SpongeBob.new)
+puts SpongeBob.new.is_squarepants?(SpongeBob.new)
 # true
 ```
 
