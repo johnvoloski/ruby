@@ -1,6 +1,8 @@
 RUBY
 ============================================
 
+Referência técnica da linguagem Ruby, baseado no material preparado por John Voloski (johnvoloski).
+
 ## Introdução:
 
 ### John Voloski:
