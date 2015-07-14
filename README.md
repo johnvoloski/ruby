@@ -1,6 +1,8 @@
 RUBY
 ============================================
 
+Referência técnica da linguagem Ruby, baseado no material preparado por John Voloski (johnvoloski).
+
 ## Introdução:
 
 ### John Voloski:
@@ -474,7 +476,7 @@ puts b % a
 # 0
 ```
 
-* ```*```
+* ```**```
 ```ruby
 # Executa o cálculo exponencial sobre o valor da variável a quando o valor de seu expoente é o valor da variável b e retorna o resultado.
 
@@ -565,11 +567,12 @@ puts (a <=> b)
 
 * `===`
 ```ruby
+# Sinônimo do operador ==
 a = 10
 b = 20
 
 puts (a === b)
-# true
+# false
 ```
 
 * `.eql?`
