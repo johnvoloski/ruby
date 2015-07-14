@@ -567,34 +567,66 @@ puts (a <=> b)
 
 * `===`
 ```ruby
-# Sinônimo do operador ==
-a = 10
-b = 20
+# É um sinônimo do operador ==, e muda dependendo da implementação do seu contexto.
 
-puts (a === b)
-# false
+a = 10
+
+puts a === 10
+# true
+
+puts Object === a
+# true
+
+puts Fixnum === a
+# true
+
+puts Integer === a
+# true
+
+puts (1..10) === a
+# true
 ```
 
 * `.eql?`
 ```ruby
-# Verifica se o valor da variável a é igual ao valor da variável b, e se seus tipos são iguais, se sim retorna true.
+# Verifica se o valor da variável a é igual ao valor da variável b, mas muda dependendo do seu contexto.
 
 a = 10
-b = 20
+b = 10.0
 
+puts a == b
+# true
+
+# a.class(Fixnum) and b.class(Float)
 puts a.eql?(b)
 # false
 ```
 
 * `.equal?`
 ```ruby
-# Verifica se o object id da variável a é igual à variável b, se sim retorna true.
+# Compara se os mesmos apontam para o mesmo objeto em memória.
 
 a = 10
-b = 20
+a.__id__
+21
+
+b = 10
+b.__id__
+21
 
 puts a.equal?(b)
-# false
+true
+
+a = "word"
+a.__id__
+87897809
+
+b = "word"
+b.__id__
+87893729
+
+puts a.equal?(b)
+false
 ```
 
 #### Atribuição:
